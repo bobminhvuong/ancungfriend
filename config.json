@@ -1,9 +1,9 @@
 {
-    "PORT": "3000",
+    "PORT": "8089",
     "BASE_URL": "/api",
     "mongodb": {
         "host": "localhost:27017",
-        "hostweb":"mongodb://bob.minhvuong:minhvuong@123@ds141661.mlab.com:41661/ancung",
+        "hostweb":"mongodb://admin:minhvuong@123@ds141661.mlab.com:41661/ancung",
         "database": "ancung"
     },
     "TOKEN":"x-access-token",
