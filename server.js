@@ -22,5 +22,5 @@ app.use(config.BASE_URL+'/party', require('./routes/party.route')());
 app.use(config.BASE_URL+'/restaurant', require('./routes/restaurant.route')());
 app.use(config.BASE_URL+'/typefood', require('./routes/typefood.route')());
 
-app.listen(process.env.PORT || 8080,console.log('serve is listening port '));
+app.listen(process.env.PORT || 3000,console.log('serve is listening port '));
 

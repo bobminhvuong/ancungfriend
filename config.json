@@ -2,7 +2,8 @@
     "PORT": "3000",
     "BASE_URL": "/api",
     "mongodb": {
-        "host": "mongodb://bob.minhvuong:minhvuong@123@ds141661.mlab.com:41661/ancung",
+        "host": "localhost:27017",
+        "hostweb":"mongodb://bob.minhvuong:minhvuong@123@ds141661.mlab.com:41661/ancung",
         "database": "ancung"
     },
     "TOKEN":"x-access-token",
