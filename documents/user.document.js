@@ -104,17 +104,17 @@
         "friend": [
             {
                 "_id": "5b4d58f3495e240b085aed6d",
-                "id": "5b4d5782fa23a111acb45871",
+                "id_friend": "5b4d5782fa23a111acb45871",
                 "follow": true
             },
             {
                 "_id": "5b4d5a641f152b12a873d575",
-                "id": "5b4d5787fa23a111acb45872",
+                "id_friend": "5b4d5787fa23a111acb45872",
                 "follow": true
             },
             {
                 "_id": "5b4d5ac9c18fd71f40bb9caa",
-                "id": "5b4d577bfa23a111acb45870",
+                "id_friend": "5b4d577bfa23a111acb45870",
                 "follow": true
             }
         ],
@@ -160,7 +160,7 @@
  * 
  * @apiRequestExample {json} Request:
  *    {
- *        "email": "duongdangthanh01@gmail.com",
+ *        "email": "minhvuong@gmail.com",
  *        "name": "vuong 123",
  *        "password": "123",
  *        "phone":"12333333333",
@@ -221,8 +221,8 @@
  * @apiSuccessExample {json} Success-Response:
  *    {
  *        "_id": "599545c60548b62a678409b9",
- *        "email": "duongdangthanh01@gmail.com",
- *        "name": "Thanh 12345",
+ *        "email": "minhvuong@gmail.com",
+ *        "name": "vuong 12345",
  *        "password": "123",
  *        "createdDate": "2017-08-17T07:29:10.635Z",
  *        "__v": 0,

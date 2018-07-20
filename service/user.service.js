@@ -95,10 +95,10 @@ function addfriend(req, myId) {
                     } else {
                         if (response) {
                             //Kiểm tra đã đánh giá hay chưa
-                            var checkMadeFriends = _.filter(response.friend, { id: req.id });
+                            var checkMadeFriends = _.filter(response.friend, { id_friend: req.id_friend });
                             if (checkMadeFriends.length <= 0) {
                                 response.friend.push({
-                                    id: req.id,
+                                    id_friend: req.id_friend,
                                     follow: true
                                 });
                                 response.save(function (err, dataFriend) {
@@ -106,7 +106,7 @@ function addfriend(req, myId) {
                                         reject(err)
                                     } else {
                                         //gọi lại hàm kết bạn lại
-                                        addfriend({ id: myId }, req.id) 
+                                        addfriend({ id_friend: myId }, req.id_friend)
 
                                         resolve({
                                             statusCode: message.STATUS_CODE.SUCCES,
@@ -157,8 +157,8 @@ function uploadAvatar(id, file) {
                                 reject(err)
                             } else {
                                 resolve({
-                                    statusCode:message.STATUS_CODE.SUCCES,
-                                    message:message.SUCCESS_MESSAGE.USER.USER_AVATAR_UPDATED
+                                    statusCode: message.STATUS_CODE.SUCCES,
+                                    message: message.SUCCESS_MESSAGE.USER.USER_AVATAR_UPDATED
                                 });
                             }
                         })
@@ -170,8 +170,8 @@ function uploadAvatar(id, file) {
                                 reject(err)
                             } else {
                                 resolve({
-                                    statusCode:message.STATUS_CODE.SUCCES,
-                                    message:message.SUCCESS_MESSAGE.USER.USER_AVATAR_UPDATED
+                                    statusCode: message.STATUS_CODE.SUCCES,
+                                    message: message.SUCCESS_MESSAGE.USER.USER_AVATAR_UPDATED
                                 });
                             }
                         })

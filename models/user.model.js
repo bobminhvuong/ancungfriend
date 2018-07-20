@@ -34,7 +34,7 @@ var userSchema = new mongoose.Schema({
     type:String
   },
   friend: [{
-    id:String,
+    id_friend:String,
     follow:Boolean
   }],
   createAt: {

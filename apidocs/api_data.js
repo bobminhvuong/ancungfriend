@@ -2793,7 +2793,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"friend\": [\n        {\n            \"_id\": \"5b4d58f3495e240b085aed6d\",\n            \"id\": \"5b4d5782fa23a111acb45871\",\n            \"follow\": true\n        },\n        {\n            \"_id\": \"5b4d5a641f152b12a873d575\",\n            \"id\": \"5b4d5787fa23a111acb45872\",\n            \"follow\": true\n        },\n        {\n            \"_id\": \"5b4d5ac9c18fd71f40bb9caa\",\n            \"id\": \"5b4d577bfa23a111acb45870\",\n            \"follow\": true\n        }\n    ],\n    \"_id\": \"5b4d578efa23a111acb45873\",\n    \"email\": \"bob.minhvuong3@gmail.com\",\n    \"name\": \"vuong\",\n    \"salt\": \"sTXqXyo9B68IxNHY38H5\",\n    \"password\": \"jG8UTJSpVby7/XvLe6lFVYDDMtLJz7D263VSwWSBaoCiRwJxBEOXNDfSFSbD0WSRuRTteaErJme6xtMpYS1otO+wkovTqXBJVy0f5EJ3+/1LBsqm2rrePProwPg0Xe83iYFXAur0GyPNchKaSCkp+m2m/mdMyu8ACtHlpgJN8hU=\",\n    \"sex\": \"nam111\",\n    \"phone\": \"1699994511\",\n    \"birtdate\": \"2018-07-12T17:00:00.000Z\",\n    \"__v\": 3\n}",
+          "content": "{\n    \"friend\": [\n        {\n            \"_id\": \"5b4d58f3495e240b085aed6d\",\n            \"id_friend\": \"5b4d5782fa23a111acb45871\",\n            \"follow\": true\n        },\n        {\n            \"_id\": \"5b4d5a641f152b12a873d575\",\n            \"id_friend\": \"5b4d5787fa23a111acb45872\",\n            \"follow\": true\n        },\n        {\n            \"_id\": \"5b4d5ac9c18fd71f40bb9caa\",\n            \"id_friend\": \"5b4d577bfa23a111acb45870\",\n            \"follow\": true\n        }\n    ],\n    \"_id\": \"5b4d578efa23a111acb45873\",\n    \"email\": \"bob.minhvuong3@gmail.com\",\n    \"name\": \"vuong\",\n    \"salt\": \"sTXqXyo9B68IxNHY38H5\",\n    \"password\": \"jG8UTJSpVby7/XvLe6lFVYDDMtLJz7D263VSwWSBaoCiRwJxBEOXNDfSFSbD0WSRuRTteaErJme6xtMpYS1otO+wkovTqXBJVy0f5EJ3+/1LBsqm2rrePProwPg0Xe83iYFXAur0GyPNchKaSCkp+m2m/mdMyu8ACtHlpgJN8hU=\",\n    \"sex\": \"nam111\",\n    \"phone\": \"1699994511\",\n    \"birtdate\": \"2018-07-12T17:00:00.000Z\",\n    \"__v\": 3\n}",
           "type": "json"
         }
       ]
@@ -3022,7 +3022,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"_id\": \"599545c60548b62a678409b9\",\n    \"email\": \"duongdangthanh01@gmail.com\",\n    \"name\": \"Thanh 12345\",\n    \"password\": \"123\",\n    \"createdDate\": \"2017-08-17T07:29:10.635Z\",\n    \"__v\": 0,\n    \"role\": \"User\"\n}",
+          "content": "{\n    \"_id\": \"599545c60548b62a678409b9\",\n    \"email\": \"minhvuong@gmail.com\",\n    \"name\": \"vuong 12345\",\n    \"password\": \"123\",\n    \"createdDate\": \"2017-08-17T07:29:10.635Z\",\n    \"__v\": 0,\n    \"role\": \"User\"\n}",
           "type": "json"
         }
       ]
