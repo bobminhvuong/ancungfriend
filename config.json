@@ -1,0 +1,14 @@
+{
+    "PORT": "3000",
+    "BASE_URL": "/api",
+    "mongodb": {
+        "host": "localhost:27017",
+        "database": "ancung"
+    },
+    "TOKEN":"x-access-token",
+    "MAIL":{
+        "SERVICE":"Gmail",
+        "USERNAME":"myEmail@gmail.com",
+        "PASSWORD":"password"
+    }
+}
