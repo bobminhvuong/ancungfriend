@@ -8,7 +8,6 @@
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/party
  *
- * @apiHeader (Request Header) {String} x-access-token token
  * 
  * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
  * @apiSuccess (Response Body 200) {String} _id party id
@@ -77,7 +76,6 @@
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/party/5b4f500cb3f8ba2e24de3177
  *
- * @apiHeader (Request Header) {String} x-access-token token
  *
  * @apiParam (Request Params) {String} id party id
  * 

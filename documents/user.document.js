@@ -149,7 +149,6 @@
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/user
  *
- * @apiHeader (Request Header) {String} x-access-token token
  *
  * @apiParam (Request Body) {String} email Email
  * @apiParam (Request Body) {String} password Password

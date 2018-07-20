@@ -377,19 +377,6 @@
         "type": "curl"
       }
     ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Request Params": [
@@ -548,19 +535,6 @@
         "type": "curl"
       }
     ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
     "success": {
       "fields": {
         "Response Header 200": [
@@ -1069,19 +1043,6 @@
         "type": "curl"
       }
     ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
     "success": {
       "fields": {
         "Response Header 200": [
@@ -1221,19 +1182,6 @@
         "type": "curl"
       }
     ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Request Params": [
@@ -1880,19 +1828,6 @@
         "type": "curl"
       }
     ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
     "success": {
       "fields": {
         "Response Header 200": [
@@ -1955,19 +1890,6 @@
         "type": "curl"
       }
     ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Request Params": [
@@ -2399,19 +2321,6 @@
         "type": "curl"
       }
     ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Request Body": [

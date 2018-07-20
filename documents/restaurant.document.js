@@ -8,7 +8,6 @@
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/restaurant
  *
- * @apiHeader (Request Header) {String} x-access-token token
  * 
  * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
  * @apiSuccess (Response Body 200) {String} _id typefood id
@@ -67,7 +66,6 @@
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/restaurant/599545c60548b62a678409b9
  *
- * @apiHeader (Request Header) {String} x-access-token token
  *
  * @apiParam (Request Params) {String} id restaurant id
  * 
