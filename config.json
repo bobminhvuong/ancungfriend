@@ -2,13 +2,13 @@
     "PORT": "3000",
     "BASE_URL": "/api",
     "mongodb": {
-        "host": "localhost:27017",
+        "host": "mongodb://<dbuser>:<dbpassword>@ds141661.mlab.com:41661/ancung",
         "database": "ancung"
     },
     "TOKEN":"x-access-token",
     "MAIL":{
         "SERVICE":"Gmail",
-        "USERNAME":"myEmail@gmail.com",
-        "PASSWORD":"password"
+        "USERNAME":"bob.minhvuong@gmail.com",
+        "PASSWORD":"minhvuong15014811"
     }
 }
