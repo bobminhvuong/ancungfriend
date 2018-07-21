@@ -20,7 +20,7 @@ function sendMail(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
         if (deCodeData) {
             req.params.myId = deCodeData._id;
-            userService.sendMail(req.params).then(function (response) {
+            userService.sendMail(req.body).then(function (response) {
                 res.send(response)
             }).catch(function (err) {
                 res.send(err)

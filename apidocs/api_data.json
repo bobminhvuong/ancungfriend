@@ -2882,7 +2882,7 @@
   },
   {
     "type": "post",
-    "url": "api/sendmail/:mail",
+    "url": "api/user/sendmail",
     "title": "SEND MAIL",
     "description": "<p>API send mail (gửi lời mời đến ứng dụng)</p>",
     "version": "0.0.1",
@@ -2891,7 +2891,7 @@
     "examples": [
       {
         "title": "Example usage:",
-        "content": "curl -i http://localhost/api/sendmail/:mail",
+        "content": "curl -i http://localhost/api/user/sendmail",
         "type": "curl"
       }
     ],
@@ -2910,9 +2910,9 @@
     },
     "parameter": {
       "fields": {
-        "Request Params": [
+        "Request mail": [
           {
-            "group": "Request Params",
+            "group": "Request mail",
             "type": "String",
             "optional": false,
             "field": "mail",
