@@ -17,7 +17,8 @@ module.exports = {
     getUserByEmail: getUserByEmail,
     createUser: createUser,
     addfriend: addfriend,
-    sendMail: sendMail
+    sendMail: sendMail,
+    createAdmin:createAdmin
 }
 
 function sendMail(req) {
@@ -59,7 +60,7 @@ function sendMail(req) {
                     // Cấu hình người nhận mail
                     var mailOptions = {
                         from: config.MAIL.USERNAME,
-                        to: req.mail,
+                        to: req.email,
                         subject: nameUserSend + ' ĐÃ MỜI BẠN GIA NHẬP CÙNG VỚI ANCUNG',
                         html: urlTemplate
                     };
@@ -71,7 +72,7 @@ function sendMail(req) {
                                 resolve({
                                     statusCode: message.STATUS_CODE.ACCEPTED,
                                     message: message.SUCCESS_MESSAGE.USER.SENT_MAIL
-                                })
+                                });
                             }
                         }
                     });

@@ -374,14 +374,14 @@
 
  //------------------------------------------------
    /**
- * @api {post} api/user/sendmail SEND MAIL
+ * @api {post} api/user/sendemail SEND MAIL
  * @apiDescription API send mail (gửi lời mời đến ứng dụng)
  * @apiVersion 0.0.1
- * @apiName sendmail
+ * @apiName sendemail
  * @apiGroup User
  *
  * @apiExample {curl} Example usage:
- *      curl -i http://localhost/api/user/sendmail
+ *      curl -i http://localhost/api/user/sendemail
  *
  * @apiHeader (Request Header) {String} x-access-token token
  * @apiParam (Request mail) {String} mail User Email User
