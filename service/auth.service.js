@@ -71,7 +71,8 @@ function login(user) {
                             reject(err);
                         } else {
                             resolve({
-                                token: token
+                                token: token,
+                                role:userModel.role
                             })
                         }
                     });

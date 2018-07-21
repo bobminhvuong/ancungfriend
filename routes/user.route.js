@@ -10,5 +10,7 @@ module.exports = function () {
     router.post('/', userController.createUser);
     router.post('/addfriend/:id', require('./../middle-ware/auth').auth(), userController.addfriend);
     router.post('/sendmail/:mail', require('./../middle-ware/auth').auth(), userController.sendMail);
+    router.post('/admin', require('./../middle-ware/auth').auth(), userController.createAdmin);
+
     return router;
 }

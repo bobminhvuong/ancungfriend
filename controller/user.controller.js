@@ -11,8 +11,10 @@ module.exports = {
     uploadAvatar: uploadAvatar,
     getUserByEmail: getUserByEmail,
     addfriend: addfriend,
-    sendMail: sendMail
+    sendMail: sendMail,
+    createAdmin:createAdmin
 }
+
 
 function sendMail(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
@@ -58,7 +60,8 @@ function getUserByEmail(req, res) {
         .catch(function (err) {
             res.send(err);
         });
-};
+}
+
 function uploadAvatar(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
         let uploadedFile = req.files.file;
@@ -78,6 +81,7 @@ function uploadAvatar(req, res) {
         }
     });
 }
+
 function deleteUser(req, res) {
     userService.deleteUser(req.params).then(function (response) {
         res.send(response)
@@ -106,6 +110,7 @@ function getUserById(req, res) {
         res.send(err)
     });
 }
+
 function getAllUser(req, res) {
     userService.getAllUser().then(function (response) {
         res.send(response);
@@ -113,8 +118,17 @@ function getAllUser(req, res) {
         res.send(err)
     })
 }
+
 function createUser(req, res) {
     userService.createUser(req.body).then(function (response) {
+        res.send(response)
+    }).catch(function (err) {
+        res.send(err)
+    });
+}
+
+function createAdmin(req, res) {
+    userService.createAdmin(req.body).then(function (response) {
         res.send(response)
     }).catch(function (err) {
         res.send(err)

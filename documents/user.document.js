@@ -179,6 +179,48 @@
  *      "message": "USER_EXIST"
  * }
  */
+//------------------------------------------------------
+
+ /**
+ * @api {put} api/user CREATE ADMIN
+ * @apiDescription API Create Admin
+ * @apiVersion 0.0.1
+ * @apiName createAdmin
+ * @apiGroup User
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/user/admin
+ *
+ *
+ * @apiParam (Request Body) {String} email Email
+ * @apiParam (Request Body) {String} password Password
+ * @apiParam (Request Body) {String} name Name
+ * @apiParam (Request Body) {String} phone phone
+ * @apiParam (Request Body) {String} sex gender
+ * 
+ * 
+ * @apiRequestExample {json} Request:
+ *    {
+ *        "email": "minhvuong@gmail.com",
+ *        "name": "vuong 123",
+ *        "password": "123",
+ *        "phone":"12333333333",
+ *         "sex":"nam"
+ *    }
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+ *         "statusCode": 201,
+ *          "message": "USER_CREATE"
+ *    }
+ * 
+ * 
+ * @apiErrorExample {json} Error-400-Response:
+ *  {
+ *      "statusCode": 400,
+ *      "message": "USER_EXIST"
+ * }
+ */
 
  //-----------------------------------------------------
 

@@ -322,6 +322,7 @@ function createUser(request) {
                             sex: request.sex,
                             phone: request.phone,
                             birtdate: request.birtdate,
+                            role:"USER",
                             createAt: new Date()
                         });
                         newUser.save(function (err, response) {
@@ -351,6 +352,58 @@ function createUser(request) {
         });
     });
 }
+
+function createAdmin(request) {
+    var checkEmail = validateEmail(request.email);
+    return new Promise((resolve, reject) => {
+        User.findOne({
+            email: request.email
+        }).exec(function (err, userModel) {
+            if (err) {
+                reject(err);
+            } else {
+                if (checkEmail) {
+                    if (!userModel) {
+                        var salt = crypto.genSalt();
+                        var newUser = new User({
+                            email: request.email,
+                            name: request.name,
+                            salt: salt,
+                            password: crypto.hashWithSalt(request.password, salt),
+                            sex: request.sex,
+                            phone: request.phone,
+                            birtdate: request.birtdate,
+                            role:"ADMIN",
+                            createAt: new Date()
+                        });
+                        newUser.save(function (err, response) {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve({
+                                    statusCode: message.STATUS_CODE.CREATED,
+                                    message: message.SUCCESS_MESSAGE.USER.CREATED
+                                });
+                            }
+                        });
+                    } else {
+                        reject({
+                            statusCode: message.STATUS_CODE.NOT_FOUND,
+                            message: message.ERROR_MESSAGE.USER.EMAIL_EXIST
+                        });
+                    }
+                } else {
+                    reject({
+                        statusCode: message.STATUS_CODE.ERROR,
+                        message: message.ERROR_MESSAGE.USER.EMAIL_ERROR
+                    });
+                }
+
+            }
+        });
+    });
+}
+
 
 function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
