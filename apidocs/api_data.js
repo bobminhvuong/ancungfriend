@@ -1,5 +1,45 @@
 define({ "api": [
   {
+    "type": "get",
+    "url": "api/auth",
+    "title": "GET USER BY TOKEN",
+    "description": "<p>API Get user by token</p>",
+    "version": "0.0.1",
+    "name": "auth",
+    "group": "AUTH",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/auth",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[{\n      \"_id\": \"599545c60548b62a678409b9\",\n       \"email\": \"minhvuong@gmail.com\",\n       \"name\": \"vuong 12345\",\n       \"password\": \"123\",\n       \"createdDate\": \"2017-08-17T07:29:10.635Z\",\n       \"__v\": 0,\n       \"role\": \"User\"   \n   }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/auth.document.js",
+    "groupTitle": "AUTH"
+  },
+  {
     "type": "post",
     "url": "api/user",
     "title": "AUTH LOGIN",
@@ -1815,68 +1855,6 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "api/typefood",
-    "title": "GET ALL TYPE FOOD",
-    "description": "<p>API Get all TYPE FOOD</p>",
-    "version": "0.0.1",
-    "name": "typefood",
-    "group": "TYPEFOOD",
-    "examples": [
-      {
-        "title": "Example usage:",
-        "content": "curl -i http://localhost/api/typefood",
-        "type": "curl"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Response Header 200": [
-          {
-            "group": "Response Header 200",
-            "type": "String",
-            "optional": false,
-            "field": "Content-Type",
-            "defaultValue": "application/json",
-            "description": "<p>Content Type</p>"
-          }
-        ],
-        "Response Body 200": [
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "_id",
-            "description": "<p>typefood id</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>name type food</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "createAt",
-            "description": "<p>create date</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "[\n   {\n     \"_id\": \"5b5095800fa8a134e864f2cb\",\n        \"name\": \"gà quay\",\n        \"createAt\": \"2018-07-19T13:43:28.278Z\",\n        \"__v\": 0\n   }\n]",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "documents/typefood.document.js",
-    "groupTitle": "TYPEFOOD"
-  },
-  {
-    "type": "get",
     "url": "api/typefood/:id",
     "title": "GET ONE TYPE FOOD",
     "description": "<p>API Get one type food</p>",
@@ -1963,6 +1941,68 @@ define({ "api": [
         {
           "title": "Error-404-Response:",
           "content": " {\n     \"statusCode\":404,\n     \"message\": \"TYPE_FOOD_NOT_FOUND\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/typefood.document.js",
+    "groupTitle": "TYPEFOOD"
+  },
+  {
+    "type": "get",
+    "url": "api/typefood",
+    "title": "GET ALL TYPE FOOD",
+    "description": "<p>API Get all TYPE FOOD</p>",
+    "version": "0.0.1",
+    "name": "typefood",
+    "group": "TYPEFOOD",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/typefood",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Response Header 200": [
+          {
+            "group": "Response Header 200",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>Content Type</p>"
+          }
+        ],
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>typefood id</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>name type food</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "createAt",
+            "description": "<p>create date</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n   {\n     \"_id\": \"5b5095800fa8a134e864f2cb\",\n        \"name\": \"gà quay\",\n        \"createAt\": \"2018-07-19T13:43:28.278Z\",\n        \"__v\": 0\n   }\n]",
           "type": "json"
         }
       ]
