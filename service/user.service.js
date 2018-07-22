@@ -18,7 +18,7 @@ module.exports = {
     createUser: createUser,
     addfriend: addfriend,
     sendMail: sendMail,
-    createAdmin:createAdmin
+    createAdmin: createAdmin
 }
 
 function sendMail(req) {
@@ -268,7 +268,7 @@ function updateUser(request) {
     });
 }
 
-function getUserById(req) {
+function getUserById(req,) {
     return new Promise((resolve, reject) => {
         User.findOne({
             _id: req.id
@@ -291,16 +291,9 @@ function getUserById(req) {
     });
 }
 
-function getAllUser() {
-    return new Promise((resolve, reject) => {
-        User.find({}).exec(function (err, response) {
-            if (err) {
-                reject(err)
-            } else {
-                resolve(response);
-            }
-        });
-    });
+async function getAllUser() {
+    let result = await User.find({});
+    return result
 }
 
 function createUser(request) {
@@ -323,7 +316,7 @@ function createUser(request) {
                             sex: request.sex,
                             phone: request.phone,
                             birtdate: request.birtdate,
-                            role:"USER",
+                            role: "USER",
                             createAt: new Date()
                         });
                         newUser.save(function (err, response) {
@@ -374,7 +367,7 @@ function createAdmin(request) {
                             sex: request.sex,
                             phone: request.phone,
                             birtdate: request.birtdate,
-                            role:"ADMIN",
+                            role: "ADMIN",
                             createAt: new Date()
                         });
                         newUser.save(function (err, response) {
