@@ -1,7 +1,7 @@
 
 var message = require('./../utils/message');
 var Party = require('./../models/party.model');
-var Restaurant = require('./../models/restaurant.model');
+var restaurantservice = require('./../service/restaurant.service');
 var _ = require('lodash');
 module.exports = {
     getAllParty: getAllParty,
@@ -10,8 +10,34 @@ module.exports = {
     deleteParty: deleteParty,
     createParty: createParty,
     getPageParty: getPageParty,
-    AddUsersToTheParty: AddUsersToTheParty
+    AddUsersToTheParty: AddUsersToTheParty,
+    getPartyByIdRestaurant: getPartyByIdRestaurant
 }
+function getPartyByIdRestaurant(req) {
+    return new Promise((resolve, reject) => {
+        restaurantservice.getRestaurantById(req).then((response) => {
+            if (response) {
+                Party.find({
+                    idRestaurant: req.id
+                }).exec(function (err, response) {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve(response)
+                    }
+                })
+            } else {
+                reject({
+                    statusCode: message.STATUS_CODE.NOT_FOUND,
+                    message: message.ERROR_MESSAGE.RESTAURANT.NOT_FOUND
+                });
+            }
+        })
+    });
+
+}
+
+
 function AddUsersToTheParty(req) {
     return new Promise((resolve, reject) => {
         Party.findOne({
@@ -176,54 +202,48 @@ function deleteParty(req) {
 
 function createParty(req) {
     return new Promise((resolve, reject) => {
-        if (req.idRestaurant) {
-            Restaurant.findOne({
-                _id: req.idRestaurant
-            }).exec(function (err, response) {
-                if (err) {
-                    reject(err)
-                } else {
-                    if (response) {
-                        if (new Date(req.dateStart) >= (new Date())) {
-                            var newParty = new Party({
-                                titel: req.titel,
-                                field: req.field,
-                                numberMax: req.numberMax,
-                                currentNumber: 1,
-                                status: true,
-                                timeStart: req.timeStart,
-                                timeEnd: req.timeEnd,
-                                dateStart: new Date(req.dateStart),
-                                idRestaurant: req.idRestaurant,
-                                listUser: [
-                                    {
-                                        id: req.myId,
-                                        leader: true
-                                    }
-                                ],
-                                createAt: new Date()
-                            });
-                            newParty.save(function (err, response) {
-                                if (err) {
-                                    reject(err);
-                                } else {
-                                    resolve(response);
+        restaurantservice.getRestaurantById(req).then((response) => {
+            if (response) {
+                if (response) {
+                    if (new Date(req.dateStart) >= (new Date())) {
+                        var newParty = new Party({
+                            titel: req.titel,
+                            field: req.field,
+                            numberMax: req.numberMax,
+                            currentNumber: 1,
+                            status: true,
+                            timeStart: req.timeStart,
+                            timeEnd: req.timeEnd,
+                            dateStart: new Date(req.dateStart),
+                            idRestaurant: req.idRestaurant,
+                            listUser: [
+                                {
+                                    id: req.myId,
+                                    leader: true
                                 }
-                            });
-                        } else {
-                            reject({
-                                statusCode: message.STATUS_CODE.NOT_FOUND,
-                                message: message.ERROR_MESSAGE.PARTY.PARTY_DATE_ERROR
-                            })
-                        }
+                            ],
+                            createAt: new Date()
+                        });
+                        newParty.save(function (err, response) {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve(response);
+                            }
+                        });
                     } else {
                         reject({
                             statusCode: message.STATUS_CODE.NOT_FOUND,
-                            message: message.ERROR_MESSAGE.RESTAURANT.RESTAURANT_NOT_FOUND
+                            message: message.ERROR_MESSAGE.PARTY.PARTY_DATE_ERROR
                         })
                     }
                 }
-            })
-        }
+            } else {
+                reject({
+                    statusCode: message.STATUS_CODE.NOT_FOUND,
+                    message: message.ERROR_MESSAGE.RESTAURANT.NOT_FOUND
+                });
+            }
+        });
     });
 }

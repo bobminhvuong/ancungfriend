@@ -1,13 +1,13 @@
+
 /**
- * @api {get} api/typefood GET ALL RESTAURANT
- * @apiDescription API Get all restaurant
+ * @api {get} api/restaurant GET ALL RESTAURANT
+ * @apiDescription API Get one restaurant
  * @apiVersion 0.0.1
  * @apiName restaurant
  * @apiGroup RESTAURANT
  *
  * @apiExample {curl} Example usage:
- *      curl -i http://localhost/api/restaurant
- *
+ *      curl -i http://localhost/api/restaurant/599545c60548b62a678409b9
  * 
  * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
  * @apiSuccess (Response Body 200) {String} _id typefood id
@@ -24,40 +24,46 @@
  * @apiSuccess (Response Body 200) {String} detail detail
  * @apiSuccess (Response Body 200) {String} averageRate averageRate
  * @apiSuccess (Response Body 200) {String} createAt create date
- * 
+ *
  * @apiSuccessExample {json} Success-Response:
  * [
  *    {
  *      "image": [],
         "listRate": [
             {
-                "_id": "5b4dd298898a8933005853f3",
-                "idUser": "5b4d5782fa23a111acb45871"
+                "_id": "5b4db55690d489190096b555",
+                "idUser": "5b4d577bfa23a111acb45870",
+                "rate": 10
+            },
+            {
+                "_id": "5b4dcf63df4e88193484b96e",
+                "idUser": "5b4d5782fa23a111acb45871",
+                "rate": 4
+            },
+            {
+                "_id": "5b4ed65e09ac793284361891",
+                "idUser": "5b4ed62609ac793284361890"
             }
         ],
-        "_id": "5b4da355dedc7030b83064c1",
-        "name": "bánh gạo nếp",
+        "_id": "5b4db55690d489190096b554",
+        "name": "bánh gạo",
         "typeFood": "5b4d611436d25b1f302d71a2",
         "timeStart": "5h30p",
         "timeAnd": "7h30",
         "address": "610 hà huy giáp",
-        "lat":1453232435323,
-        "long":232323232.23232,
-        "minPrice":100,
-        "maxPrice"9000,
-        "detail":"ga quay ngon nhat he mat troi",
-        "averageRate":50,
-        "createAt":"2018-2-2"
-        "__v": 5
+        "averageRate": 7,
+        "__v": 2
  *    }
  * ]
+ *
  */
+
 
 
 //-----------------------------------------------------
 
 /**
- * @api {get} api/typefood/:id GET ONE RESTAURANT
+ * @api {get} api/restaurant/:id GET ONE RESTAURANT
  * @apiDescription API Get one restaurant
  * @apiVersion 0.0.1
  * @apiName restaurant
@@ -126,6 +132,77 @@
 
 //-----------------------------------------------------
 
+/**
+ * @api {get} api/restaurant?page=?&&limit=? GET PAGE RESTAURANT 
+ * @apiDescription API Get Pgae restaurant
+ * @apiVersion 0.0.1
+ * @apiName restaurant
+ * @apiGroup RESTAURANT
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/restaurant?page=1&&limit=10
+ *
+ *
+ * @apiParam (Request Query) {Number} page page get
+ * @apiParam (Request Query) {Number} limit limit get
+ * 
+ * 
+ * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
+ * @apiSuccess (Response Body 200) {String} _id typefood id
+ * @apiSuccess (Response Body 200) {String} name  name restaurant
+ * @apiSuccess (Response Body 200) {String} image list image
+ * @apiSuccess (Response Body 200) {String} typeFood id TypeFood
+ * @apiSuccess (Response Body 200) {String} timeStart timeStart
+ * @apiSuccess (Response Body 200) {String} timeAnd timeAnd
+ * @apiSuccess (Response Body 200) {String} address address
+ * @apiSuccess (Response Body 200) {String} lat lat
+ * @apiSuccess (Response Body 200) {String} long long
+ * @apiSuccess (Response Body 200) {String} minPrice minPrice
+ * @apiSuccess (Response Body 200) {String} maxPrice maxPrice
+ * @apiSuccess (Response Body 200) {String} detail detail
+ * @apiSuccess (Response Body 200) {String} averageRate averageRate
+ * @apiSuccess (Response Body 200) {String} createAt create date
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * [
+ *    {
+ *      "image": [],
+        "listRate": [
+            {
+                "_id": "5b4db55690d489190096b555",
+                "idUser": "5b4d577bfa23a111acb45870",
+                "rate": 10
+            },
+            {
+                "_id": "5b4dcf63df4e88193484b96e",
+                "idUser": "5b4d5782fa23a111acb45871",
+                "rate": 4
+            },
+            {
+                "_id": "5b4ed65e09ac793284361891",
+                "idUser": "5b4ed62609ac793284361890"
+            }
+        ],
+        "_id": "5b4db55690d489190096b554",
+        "name": "bánh gạo",
+        "typeFood": "5b4d611436d25b1f302d71a2",
+        "timeStart": "5h30p",
+        "timeAnd": "7h30",
+        "address": "610 hà huy giáp",
+        "averageRate": 7,
+        "__v": 2
+ *    }
+ * ]
+ *
+ * @apiError (Response Body 404) {String} message Error message
+ * @apiErrorExample {json} Error-404-Response:
+ *  {
+ *      "statusCode":404,
+ *      "message": "RESTAURANT_NOT_FOUND"
+ * }
+ */
+
+//-----------------------------------------------------
 /**
  * @api {post} api/user CREATE RESTAURANT
  * @apiDescription API Create restaurant

@@ -25,7 +25,14 @@ function getAllParty(req, res) {
         }).catch((err) => {
             res.send(err)
         })
-    } else {
+    } else if (req.query.idRestaurant) {
+        partyService.getPartyByIdRestaurant(req.params).then((response) => {
+            res.send(response);
+        }).catch((err) => {
+            res.send(err);
+        })
+    }
+    else {
         partyService.getAllParty().then((response) => {
             res.send(response);
         }).catch((err) => {
