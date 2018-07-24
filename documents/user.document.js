@@ -225,7 +225,7 @@
  //-----------------------------------------------------
 
 /**
- * @api {post} api/user/:id UPDATE USER
+ * @api {put} api/user/:id UPDATE USER
  * @apiDescription API Update User
  * @apiVersion 0.0.1
  * @apiName updateUser

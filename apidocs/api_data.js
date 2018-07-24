@@ -3492,7 +3492,7 @@ define({ "api": [
     "groupTitle": "User"
   },
   {
-    "type": "post",
+    "type": "put",
     "url": "api/user/:id",
     "title": "UPDATE USER",
     "description": "<p>API Update User</p>",

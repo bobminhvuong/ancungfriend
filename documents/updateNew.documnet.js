@@ -208,6 +208,7 @@
  * @apiDescription API Get all PARTY
  * @apiVersion 0.0.1
  * @apiName party
+ * 
  * @apiGroup UPADATE
  *
  * @apiExample {curl} Example usage:
