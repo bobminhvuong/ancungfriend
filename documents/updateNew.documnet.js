@@ -213,6 +213,9 @@
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/party
  *
+ *  * @apiExample {curl} Example usage get page:
+ *      curl -i http://localhost/api/party?page=1&&limit=10
+ * 
  * 
  * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
  * @apiSuccess (Response Body 200) {String} _id party id

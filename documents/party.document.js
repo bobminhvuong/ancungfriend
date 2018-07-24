@@ -11,6 +11,9 @@
  *      curl -i http://localhost/api/party/5b4f500cb3f8ba2e24de3177
  *
  *
+ *  
+ *
+ * 
  * @apiParam (Request Params) {String} id party id
  * 
 * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type

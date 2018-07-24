@@ -2358,6 +2358,11 @@
         "title": "Example usage:",
         "content": "curl -i http://localhost/api/party",
         "type": "curl"
+      },
+      {
+        "title": "Example usage get page:",
+        "content": "curl -i http://localhost/api/party?page=1&&limit=10",
+        "type": "curl"
       }
     ],
     "success": {
