@@ -3,7 +3,7 @@
  * @apiDescription API Get one restaurant
  * @apiVersion 0.0.1
  * @apiName restaurant
- * @apiGroup RESTAURANT
+ * @apiGroup UPADATE
  *
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/restaurant/599545c60548b62a678409b9
@@ -63,7 +63,7 @@
  * @apiDescription API type food by idrestaurant
  * @apiVersion 0.0.1
  * @apiName party
- * @apiGroup PARTY
+ * @apiGroup UPADATE
  *
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/party?idrestaurant=5b4f500cb3f8ba2e24de3178
@@ -140,7 +140,7 @@
  * @apiDescription API Get page type food
  * @apiVersion 0.0.1
  * @apiName party
- * @apiGroup PARTY
+ * @apiGroup UPADATE
  *
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/party?page=1&&limit=10
@@ -208,7 +208,7 @@
  * @apiDescription API Get all PARTY
  * @apiVersion 0.0.1
  * @apiName party
- * @apiGroup PARTY
+ * @apiGroup UPADATE
  *
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/party
