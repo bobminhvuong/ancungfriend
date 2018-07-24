@@ -250,6 +250,7 @@ function updateUser(request) {
                     response.birtdate = request.birtdate || response.birtdate;
                     response.sex = request.sex || response.sex;
                     response.address = request.address || response.address;
+                    response.role = response.role;
                     response.save(function (err, response) {
                         if (err) {
                             reject(err)

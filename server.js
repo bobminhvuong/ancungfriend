@@ -26,6 +26,5 @@ app.use(config.BASE_URL+'/typefood', require('./routes/typefood.route')());
 app.use('/',function(req,res){
     res.status(301).redirect("https://ancungfriend.herokuapp.com/apidocs/index.html")
 })
-
 app.listen(process.env.PORT || config.PORT,console.log('serve is listening port '+config.PORT));
 

@@ -94,7 +94,7 @@ function updateUser(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
         if (deCodeData) {
             req.body.myId = deCodeData._id;
-            userService.updateUser(req.body, uploadedFile).then(function (response) {
+            userService.updateUser(req.body).then(function (response) {
                 res.send(response)
             }).catch(function (err) {
                 res.send(err)
