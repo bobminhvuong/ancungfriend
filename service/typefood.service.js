@@ -6,22 +6,31 @@ module.exports = {
     updateTypeFood: updateTypeFood,
     deleteTypeFood: deleteTypeFood,
     createTypeFood: createTypeFood,
-    getPageTypeFood:getPageTypeFood
+    getPageTypeFood: getPageTypeFood
 }
 
 function getPageTypeFood(req) {
     var start = (req.page - 1) * req.limit;
-    TypeFood.find({})
-    .sort({'createAt': -1})
-    .skip(start)
-    .limit(req.limit)
-    .exec(function(err,response){
-        if(err){
+    TypeFood.find().exec(function (err, response) {
+        if (err) {
             reject(err)
-        }else{
-            resolve(response);
+        } else {
+            TypeFood.find({})
+                .sort({ 'createAt': -1 })
+                .skip(start)
+                .limit(req.limit)
+                .exec(function (err, limitdata) {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        var data = {
+                            count: response.length,
+                            typeFood: limitdata
+                        }
+                    }
+                })
         }
-    })
+    });
 }
 
 function getAllTypeFood() {

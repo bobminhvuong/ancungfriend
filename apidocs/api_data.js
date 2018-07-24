@@ -2203,7 +2203,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "api/party?page=?&&limit=?",
-    "title": "GET PARTY BY ID RESTAURANT",
+    "title": "GET PAGE PARTY",
     "description": "<p>API Get page type food</p>",
     "version": "0.0.1",
     "name": "party",

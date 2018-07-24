@@ -136,7 +136,7 @@
  
 
 /**
- * @api {get} api/party?page=?&&limit=? GET PARTY BY ID RESTAURANT
+ * @api {get} api/party?page=?&&limit=? GET PAGE PARTY 
  * @apiDescription API Get page type food
  * @apiVersion 0.0.1
  * @apiName party

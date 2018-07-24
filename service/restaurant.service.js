@@ -25,7 +25,7 @@ function addImagRestaurant(req, file) {
             } else {
                 if (response) {
                     if (response.image.length > 0) {
-                        var pathOne = '../public/restaurant/restaurant_' + (response.image.length + 1) +'_'+ req.id;
+                        var pathOne = '../public/restaurant/restaurant_' + (response.image.length + 1) + '_' + req.id;
                         genericService.uploadImage(file, pathOne);
                         response.image.push({
                             image: 'restaurant_' + (response.image.length + 1) + '_' + req.id + '.png'
@@ -41,7 +41,7 @@ function addImagRestaurant(req, file) {
                             }
                         })
                     } else {
-                        var pathTwo = '../public/restaurant/restaurant_' + 1 +'_'+ req.id;
+                        var pathTwo = '../public/restaurant/restaurant_' + 1 + '_' + req.id;
                         genericService.uploadImage(file, pathTwo);
                         response.image.push({
                             image: 'restaurant_' + 1 + '_' + req.id + '.png'
@@ -69,17 +69,31 @@ function addImagRestaurant(req, file) {
 }
 function getPageRestaurant(req) {
     var start = (req.page - 1) * req.limit;
-    Restaurant.find({})
-        .sort({ 'createAt': -1 })
-        .skip(start)
-        .limit(req.limit)
-        .exec(function (err, response) {
-            if (err) {
-                reject(err)
-            } else {
-                resolve(response);
+    Restaurant.find().exec(function (err, response) {
+        if (err) {
+            reject(err)
+        } else {
+            if (response) {
+                Restaurant.find({})
+                    .sort({ 'createAt': -1 })
+                    .skip(start)
+                    .limit(req.limit)
+                    .exec(function (err, datalimit) {
+                        if (err) {
+                            reject(err)
+                        } else {
+                            var data = {
+                                count: response.length,
+                                restaurant: datalimit
+                            }
+                            resolve(data);
+                        }
+                    })
             }
-        })
+        }
+    })
+
+
 }
 
 function updateRate(req) {
