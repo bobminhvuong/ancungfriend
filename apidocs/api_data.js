@@ -2478,7 +2478,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "api/party/forthcoming",
-    "title": "GET ALL PARTY",
+    "title": "GET PARTY FORTHCOMMING",
     "description": "<p>API Get all PARTY forthcoming</p>",
     "version": "0.0.1",
     "name": "party",

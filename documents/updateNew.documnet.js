@@ -277,7 +277,7 @@
 
 
 /**
- * @api {get} api/party/forthcoming GET ALL PARTY
+ * @api {get} api/party/forthcoming GET PARTY FORTHCOMMING
  * @apiDescription API Get all PARTY forthcoming
  * @apiVersion 0.0.1
  * @apiName party
