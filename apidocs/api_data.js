@@ -2048,7 +2048,7 @@ define({ "api": [
     "title": "GET ALL PARTY",
     "description": "<p>API Get all PARTY</p>",
     "version": "0.0.1",
-    "name": "get_party",
+    "name": "get_all_party",
     "group": "UPADATE",
     "examples": [
       {
@@ -2174,11 +2174,156 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "api/party?page=?&&limit=?",
+    "title": "GET PAGE PARTY",
+    "description": "<p>API Get page type food</p>",
+    "version": "0.0.1",
+    "name": "get_page_party",
+    "group": "UPADATE",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/party?page=1&&limit=10",
+        "type": "curl"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Request query": [
+          {
+            "group": "Request query",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>page get</p>"
+          },
+          {
+            "group": "Request query",
+            "type": "String",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>limit get</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Header 200": [
+          {
+            "group": "Response Header 200",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>Content Type</p>"
+          }
+        ],
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>party id</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "titel",
+            "description": "<p>titel party, event</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "field",
+            "description": "<p>field</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "numberMax",
+            "description": "<p>number user max</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "currentNumber",
+            "description": "<p>current Number user</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>party active or unactive</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "timeStart",
+            "description": "<p>time start</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "timeEnd",
+            "description": "<p>time End</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "dateStart",
+            "description": "<p>date start</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "idRestaurant",
+            "description": "<p>id Restaurant</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "listUser",
+            "description": "<p>list user participation</p>"
+          },
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "createAt",
+            "description": "<p>date create party</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n   {\n      \"listUser\": [\n            {\n                \"_id\": \"5b4f500cb3f8ba2e24de3178\",\n                \"id\": \"5b4f500cb3f8ba2e24de3177\",\n                \"leader\": true\n            },\n            {\n                \"_id\": \"5b4f508c1fa148122c0e96eb\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50b575565e39708b3522\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50cd3f37653748d34279\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            }\n        ],\n        \"_id\": \"5b4f500cb3f8ba2e24de3177\",\n        \"titel\": \"ăn \",\n        \"field\": \" nhậu\",\n        \"numberMax\": 5,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"7h\",\n        \"dateStart\": \"2018-07-18T17:00:00.000Z\",\n        \"idRestaurant\": \"5b4da355dedc7030b83064c1\",\n        \"createAt\": \"2018-07-18T14:34:52.831Z\",\n        \"__v\": 3\n   }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/updateNew.documnet.js",
+    "groupTitle": "UPADATE"
+  },
+  {
+    "type": "get",
     "url": "api/party?idrestaurant=?",
     "title": "GET PARTY BY ID RESTAURANT",
     "description": "<p>API type food by idrestaurant</p>",
     "version": "0.0.1",
-    "name": "party",
+    "name": "get_party_by_id_restaurant",
     "group": "UPADATE",
     "examples": [
       {
@@ -2332,151 +2477,6 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "api/party?page=?&&limit=?",
-    "title": "GET PAGE PARTY",
-    "description": "<p>API Get page type food</p>",
-    "version": "0.0.1",
-    "name": "party",
-    "group": "UPADATE",
-    "examples": [
-      {
-        "title": "Example usage:",
-        "content": "curl -i http://localhost/api/party?page=1&&limit=10",
-        "type": "curl"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Request query": [
-          {
-            "group": "Request query",
-            "type": "String",
-            "optional": false,
-            "field": "page",
-            "description": "<p>page get</p>"
-          },
-          {
-            "group": "Request query",
-            "type": "String",
-            "optional": false,
-            "field": "limit",
-            "description": "<p>limit get</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response Header 200": [
-          {
-            "group": "Response Header 200",
-            "type": "String",
-            "optional": false,
-            "field": "Content-Type",
-            "defaultValue": "application/json",
-            "description": "<p>Content Type</p>"
-          }
-        ],
-        "Response Body 200": [
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "_id",
-            "description": "<p>party id</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "titel",
-            "description": "<p>titel party, event</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "field",
-            "description": "<p>field</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "numberMax",
-            "description": "<p>number user max</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "currentNumber",
-            "description": "<p>current Number user</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>party active or unactive</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "timeStart",
-            "description": "<p>time start</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "timeEnd",
-            "description": "<p>time End</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "dateStart",
-            "description": "<p>date start</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "idRestaurant",
-            "description": "<p>id Restaurant</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "listUser",
-            "description": "<p>list user participation</p>"
-          },
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "createAt",
-            "description": "<p>date create party</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "[\n   {\n      \"listUser\": [\n            {\n                \"_id\": \"5b4f500cb3f8ba2e24de3178\",\n                \"id\": \"5b4f500cb3f8ba2e24de3177\",\n                \"leader\": true\n            },\n            {\n                \"_id\": \"5b4f508c1fa148122c0e96eb\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50b575565e39708b3522\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50cd3f37653748d34279\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            }\n        ],\n        \"_id\": \"5b4f500cb3f8ba2e24de3177\",\n        \"titel\": \"ăn \",\n        \"field\": \" nhậu\",\n        \"numberMax\": 5,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"7h\",\n        \"dateStart\": \"2018-07-18T17:00:00.000Z\",\n        \"idRestaurant\": \"5b4da355dedc7030b83064c1\",\n        \"createAt\": \"2018-07-18T14:34:52.831Z\",\n        \"__v\": 3\n   }\n]",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "documents/updateNew.documnet.js",
-    "groupTitle": "UPADATE"
-  },
-  {
-    "type": "get",
     "url": "api/restaurant",
     "title": "GET ALL RESTAURANT",
     "description": "<p>API Get one restaurant</p>",
@@ -2617,7 +2617,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "api/party/forthcoming",
-    "title": "",
+    "title": "GET PARTY FORTHCOMMING",
     "description": "<p>API get forthComming</p>",
     "version": "0.0.1",
     "name": "get_forthComming",

@@ -62,7 +62,7 @@
  * @api {get} api/party?idrestaurant=? GET PARTY BY ID RESTAURANT
  * @apiDescription API type food by idrestaurant
  * @apiVersion 0.0.1
- * @apiName party
+ * @apiName get party by id restaurant
  * @apiGroup UPADATE
  *
  * @apiExample {curl} Example usage:
@@ -139,7 +139,7 @@
  * @api {get} api/party?page=?&&limit=? GET PAGE PARTY 
  * @apiDescription API Get page type food
  * @apiVersion 0.0.1
- * @apiName party
+ * @apiName get page party
  * @apiGroup UPADATE
  *
  * @apiExample {curl} Example usage:
@@ -207,7 +207,7 @@
  * @api {get} api/party GET ALL PARTY
  * @apiDescription API Get all PARTY
  * @apiVersion 0.0.1
- * @apiName get party
+ * @apiName get all party 
  * 
  * @apiGroup UPADATE
  *
@@ -273,7 +273,7 @@
  */
 
 /**
- * @api {get} api/party/forthcoming
+ * @api {get} api/party/forthcoming GET PARTY FORTHCOMMING
  * @apiDescription API get forthComming
  * @apiVersion 0.0.1
  * @apiName get forthComming
