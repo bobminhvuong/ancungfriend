@@ -2049,7 +2049,7 @@ define({ "api": [
     "description": "<p>API Get all PARTY</p>",
     "version": "0.0.1",
     "name": "get_all_party",
-    "group": "UPADATE",
+    "group": "UPDATE",
     "examples": [
       {
         "title": "Example usage:",
@@ -2170,7 +2170,81 @@ define({ "api": [
       ]
     },
     "filename": "documents/updateNew.documnet.js",
-    "groupTitle": "UPADATE"
+    "groupTitle": "UPDATE"
+  },
+  {
+    "type": "get",
+    "url": "api/party/forthcoming",
+    "title": "GET PARTY FORTHCOMMING",
+    "description": "<p>API get forthComming</p>",
+    "version": "0.0.1",
+    "name": "get_forthComming",
+    "group": "UPDATE",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/party/forthComming",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Request Params": [
+          {
+            "group": "Request Params",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Header 200": [
+          {
+            "group": "Response Header 200",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>Content Type</p>"
+          }
+        ],
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  [\n   {\n      \"listUser\": [\n            {\n                \"_id\": \"5b4f500cb3f8ba2e24de3178\",\n                \"id\": \"5b4f500cb3f8ba2e24de3177\",\n                \"leader\": true\n            },\n            {\n                \"_id\": \"5b4f508c1fa148122c0e96eb\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50b575565e39708b3522\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50cd3f37653748d34279\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            }\n        ],\n        \"_id\": \"5b4f500cb3f8ba2e24de3177\",\n        \"titel\": \"ăn \",\n        \"field\": \" nhậu\",\n        \"numberMax\": 5,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"7h\",\n        \"dateStart\": \"2018-07-18T17:00:00.000Z\",\n        \"idRestaurant\": \"5b4da355dedc7030b83064c1\",\n        \"createAt\": \"2018-07-18T14:34:52.831Z\",\n        \"__v\": 3\n   }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/updateNew.documnet.js",
+    "groupTitle": "UPDATE"
   },
   {
     "type": "get",
@@ -2179,7 +2253,7 @@ define({ "api": [
     "description": "<p>API Get page type food</p>",
     "version": "0.0.1",
     "name": "get_page_party",
-    "group": "UPADATE",
+    "group": "UPDATE",
     "examples": [
       {
         "title": "Example usage:",
@@ -2315,7 +2389,7 @@ define({ "api": [
       ]
     },
     "filename": "documents/updateNew.documnet.js",
-    "groupTitle": "UPADATE"
+    "groupTitle": "UPDATE"
   },
   {
     "type": "get",
@@ -2324,7 +2398,7 @@ define({ "api": [
     "description": "<p>API type food by idrestaurant</p>",
     "version": "0.0.1",
     "name": "get_party_by_id_restaurant",
-    "group": "UPADATE",
+    "group": "UPDATE",
     "examples": [
       {
         "title": "Example usage:",
@@ -2473,7 +2547,7 @@ define({ "api": [
       ]
     },
     "filename": "documents/updateNew.documnet.js",
-    "groupTitle": "UPADATE"
+    "groupTitle": "UPDATE"
   },
   {
     "type": "get",
@@ -2482,7 +2556,7 @@ define({ "api": [
     "description": "<p>API Get one restaurant</p>",
     "version": "0.0.1",
     "name": "restaurant",
-    "group": "UPADATE",
+    "group": "UPDATE",
     "examples": [
       {
         "title": "Example usage:",
@@ -2607,80 +2681,6 @@ define({ "api": [
         {
           "title": "Success-Response:",
           "content": "[\n   {\n     \"image\": [],\n        \"listRate\": [\n            {\n                \"_id\": \"5b4db55690d489190096b555\",\n                \"idUser\": \"5b4d577bfa23a111acb45870\",\n                \"rate\": 10\n            },\n            {\n                \"_id\": \"5b4dcf63df4e88193484b96e\",\n                \"idUser\": \"5b4d5782fa23a111acb45871\",\n                \"rate\": 4\n            },\n            {\n                \"_id\": \"5b4ed65e09ac793284361891\",\n                \"idUser\": \"5b4ed62609ac793284361890\"\n            }\n        ],\n        \"_id\": \"5b4db55690d489190096b554\",\n        \"name\": \"bánh gạo\",\n        \"typeFood\": \"5b4d611436d25b1f302d71a2\",\n        \"timeStart\": \"5h30p\",\n        \"timeAnd\": \"7h30\",\n        \"address\": \"610 hà huy giáp\",\n        \"averageRate\": 7,\n        \"__v\": 2\n   }\n]",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "documents/updateNew.documnet.js",
-    "groupTitle": "UPADATE"
-  },
-  {
-    "type": "get",
-    "url": "api/party/forthcoming",
-    "title": "GET PARTY FORTHCOMMING",
-    "description": "<p>API get forthComming</p>",
-    "version": "0.0.1",
-    "name": "get_forthComming",
-    "group": "UPDATE",
-    "examples": [
-      {
-        "title": "Example usage:",
-        "content": "curl -i http://localhost/api/party/forthComming",
-        "type": "curl"
-      }
-    ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Request Params": [
-          {
-            "group": "Request Params",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>User id</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response Header 200": [
-          {
-            "group": "Response Header 200",
-            "type": "String",
-            "optional": false,
-            "field": "Content-Type",
-            "defaultValue": "application/json",
-            "description": "<p>Content Type</p>"
-          }
-        ],
-        "Response Body 200": [
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>Message</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "  [\n   {\n      \"listUser\": [\n            {\n                \"_id\": \"5b4f500cb3f8ba2e24de3178\",\n                \"id\": \"5b4f500cb3f8ba2e24de3177\",\n                \"leader\": true\n            },\n            {\n                \"_id\": \"5b4f508c1fa148122c0e96eb\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50b575565e39708b3522\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50cd3f37653748d34279\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            }\n        ],\n        \"_id\": \"5b4f500cb3f8ba2e24de3177\",\n        \"titel\": \"ăn \",\n        \"field\": \" nhậu\",\n        \"numberMax\": 5,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"7h\",\n        \"dateStart\": \"2018-07-18T17:00:00.000Z\",\n        \"idRestaurant\": \"5b4da355dedc7030b83064c1\",\n        \"createAt\": \"2018-07-18T14:34:52.831Z\",\n        \"__v\": 3\n   }\n]",
           "type": "json"
         }
       ]
