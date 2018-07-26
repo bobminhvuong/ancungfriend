@@ -207,7 +207,7 @@
  * @api {get} api/party GET ALL PARTY
  * @apiDescription API Get all PARTY
  * @apiVersion 0.0.1
- * @apiName party
+ * @apiName get party
  * 
  * @apiGroup UPADATE
  *
@@ -272,38 +272,25 @@
  * ]
  */
 
-
-//-----------------------------------------------------
-
-
 /**
- * @api {get} api/party/forthcoming GET PARTY FORTHCOMMING
- * @apiDescription API Get all PARTY forthcoming
+ * @api {get} api/party/forthcoming
+ * @apiDescription API get forthComming
  * @apiVersion 0.0.1
- * @apiName party
- * 
- * @apiGroup UPADATE
+ * @apiName get forthComming
+ * @apiGroup UPDATE
  *
  * @apiExample {curl} Example usage:
- *      curl -i http://localhost/api/party/forthcoming
- * 
+ *      curl -i http://localhost/api/party/forthComming
+ *
+ * @apiHeader (Request Header) {String} x-access-token token
+ *
+ * @apiParam (Request Params) {String} id User id
  * 
  * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
- * @apiSuccess (Response Body 200) {String} _id party id
- * @apiSuccess (Response Body 200) {String} titel  titel party, event
- * @apiSuccess (Response Body 200) {String} field field
- * @apiSuccess (Response Body 200) {StNumberring} numberMax  number user max
- * @apiSuccess (Response Body 200) {Number} currentNumber current Number user 
- * @apiSuccess (Response Body 200) {String} status party active or unactive
- * @apiSuccess (Response Body 200) {String} timeStart time start
- * @apiSuccess (Response Body 200) {String} timeEnd  time End
- * @apiSuccess (Response Body 200) {Date} dateStart date start
- * @apiSuccess (Response Body 200) {String} idRestaurant id Restaurant
- * @apiSuccess (Response Body 200) {String} listUser list user participation
- * @apiSuccess (Response Body 200) {Date} createAt date create party
+ * @apiSuccess (Response Body 200) {String} message Message
  *
  * @apiSuccessExample {json} Success-Response:
- * [
+ *   [
  *    {
  *       "listUser": [
             {
@@ -340,4 +327,7 @@
         "__v": 3
  *    }
  * ]
+ *
  */
+
+ //--------------------------------------------------------
