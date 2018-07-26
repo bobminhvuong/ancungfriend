@@ -16,7 +16,7 @@ app.use(fileUpload());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/apidocs', express.static(path.join(__dirname, 'apidocs')));
 
-
+  
 //Api
 app.use(config.BASE_URL+'/user', require('./routes/user.route')());
 app.use(config.BASE_URL+'/auth', require('./routes/auth.route')());

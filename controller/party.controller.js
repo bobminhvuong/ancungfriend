@@ -8,14 +8,24 @@ module.exports = {
     updateParty: updateParty,
     deleteParty: deleteParty,
     createParty: createParty,
-    AddUsersToTheParty: AddUsersToTheParty
+    AddUsersToTheParty: AddUsersToTheParty,
+    getAllPartyNotUsed:getAllPartyNotUsed
 }
+
 function getInfomationUserUsing(token) {
     return new Promise((resolve, reject) => {
         jwt.verify(token, function (err, deCodeData) {
             resolve(deCodeData)
         })
     });
+}
+
+function getAllPartyNotUsed(req,res){
+    partyService.getAllPartyNotUsed().then(function(response){
+        res.send(response)
+    }).catch(function(err){
+        res.send(err)
+    })
 }
 
 function getAllParty(req, res) {

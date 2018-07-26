@@ -1,12 +1,13 @@
 var router = require('express').Router();
 var partyController = require('./../controller/party.controller');
-
+var auth = require('./../middle-ware/auth').auth()
 module.exports = function () {
     router.get('/', partyController.getAllParty);
     router.get('/:id', partyController.getPartyById);
-    router.put('/:id', require('./../middle-ware/auth').auth(), partyController.updateParty);
-    router.delete('/:id', require('./../middle-ware/auth').auth(), partyController.deleteParty);
-    router.post('/', require('./../middle-ware/auth').auth(), partyController.createParty);
-    router.post('/joinParty/:id', require('./../middle-ware/auth').auth(), partyController.AddUsersToTheParty);//idRestaurant
+    router.put('/:id', auth, partyController.updateParty);
+    router.delete('/:id', auth, partyController.deleteParty);
+    router.post('/', auth, partyController.createParty);
+    router.post('/joinParty/:id', auth, partyController.AddUsersToTheParty);//idRestaurant
+    router.get('/forthcoming', auth, partyController.getAllPartyNotUsed);
     return router;
 }

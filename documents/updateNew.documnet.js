@@ -275,3 +275,69 @@
 
 //-----------------------------------------------------
 
+
+/**
+ * @api {get} api/party/forthcoming GET ALL PARTY
+ * @apiDescription API Get all PARTY forthcoming
+ * @apiVersion 0.0.1
+ * @apiName party
+ * 
+ * @apiGroup UPADATE
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/party/forthcoming
+ * 
+ * 
+ * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
+ * @apiSuccess (Response Body 200) {String} _id party id
+ * @apiSuccess (Response Body 200) {String} titel  titel party, event
+ * @apiSuccess (Response Body 200) {String} field field
+ * @apiSuccess (Response Body 200) {StNumberring} numberMax  number user max
+ * @apiSuccess (Response Body 200) {Number} currentNumber current Number user 
+ * @apiSuccess (Response Body 200) {String} status party active or unactive
+ * @apiSuccess (Response Body 200) {String} timeStart time start
+ * @apiSuccess (Response Body 200) {String} timeEnd  time End
+ * @apiSuccess (Response Body 200) {Date} dateStart date start
+ * @apiSuccess (Response Body 200) {String} idRestaurant id Restaurant
+ * @apiSuccess (Response Body 200) {String} listUser list user participation
+ * @apiSuccess (Response Body 200) {Date} createAt date create party
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * [
+ *    {
+ *       "listUser": [
+            {
+                "_id": "5b4f500cb3f8ba2e24de3178",
+                "id": "5b4f500cb3f8ba2e24de3177",
+                "leader": true
+            },
+            {
+                "_id": "5b4f508c1fa148122c0e96eb",
+                "id": "5b4ed87ea588892fa8db6590",
+                "leader": false
+            },
+            {
+                "_id": "5b4f50b575565e39708b3522",
+                "id": "5b4ed87ea588892fa8db6590",
+                "leader": false
+            },
+            {
+                "_id": "5b4f50cd3f37653748d34279",
+                "id": "5b4ed87ea588892fa8db6590",
+                "leader": false
+            }
+        ],
+        "_id": "5b4f500cb3f8ba2e24de3177",
+        "titel": "ăn ",
+        "field": " nhậu",
+        "numberMax": 5,
+        "currentNumber": 1,
+        "status": true,
+        "timeStart": "7h",
+        "dateStart": "2018-07-18T17:00:00.000Z",
+        "idRestaurant": "5b4da355dedc7030b83064c1",
+        "createAt": "2018-07-18T14:34:52.831Z",
+        "__v": 3
+ *    }
+ * ]
+ */

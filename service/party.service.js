@@ -11,9 +11,10 @@ module.exports = {
     createParty: createParty,
     getPageParty: getPageParty,
     AddUsersToTheParty: AddUsersToTheParty,
-    getPartyByIdRestaurant: getPartyByIdRestaurant
+    getPartyByIdRestaurant: getPartyByIdRestaurant,
+    getAllPartyNotUsed:getAllPartyNotUsed
 }
-  
+
 function getPartyByIdRestaurant(req) {
     return new Promise((resolve, reject) => {
         restaurantservice.getRestaurantById(req).then((response) => {
@@ -105,14 +106,30 @@ function getPageParty(req) {
 
 function getAllParty() {
     return new Promise((resolve, reject) => {
-        var dateNow = new Date();
-        var dateNowConvert = dateNow.getFullYear()+'-'+dateNow.getMonth()+'-'+dateNow.getDay();
         Party.find({
         }).exec(function (err, response) {
             if (err) {
                 reject(err)
             } else {
-                var result = response.find(function(element){
+                var result = response.find(function (element) {
+                    return element.dateStart >= dateNowConvert;
+                })
+                resolve(result);
+            }
+        })
+    });
+}
+
+
+function getAllPartyNotUsed() {
+    return new Promise((resolve, reject) => {
+        Party.find({
+            dateStart: true
+        }).exec(function (err, response) {
+            if (err) {
+                reject(err)
+            } else {
+                var result = response.find(function (element) {
                     return element.dateStart >= dateNowConvert;
                 })
                 resolve(result);
@@ -209,12 +226,12 @@ function deleteParty(req) {
 
 function createParty(req) {
     return new Promise((resolve, reject) => {
-        var restaurant ={
-            id:req.idRestaurant
+        var restaurant = {
+            id: req.idRestaurant
         }
         restaurantservice.getRestaurantById(restaurant).then((response) => {
             var dateNow = new Date();
-            var dateNowConvert = dateNow.getFullYear()+'-'+dateNow.getMonth()+'-'+dateNow.getDay();
+            var dateNowConvert = dateNow.getFullYear() + '-' + dateNow.getMonth() + '-' + dateNow.getDay();
             if (response) {
                 if (response) {
                     if (req.dateStart >= dateNowConvert) {
@@ -258,4 +275,20 @@ function createParty(req) {
             }
         });
     });
+}
+//auto load data sau 1 tiếng 
+checkparty();
+function checkparty() {
+    var dateNow = new Date();
+    Party.find({
+        status:true
+    }).exec(function(err,response){
+        response.forEach(element => {
+            if(element.dateStart < dateNow){
+                element.status = false;
+                element.save();
+            }
+        });
+    })
+    setTimeout(checkparty, 3600000);
 }
