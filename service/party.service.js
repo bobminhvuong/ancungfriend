@@ -13,6 +13,7 @@ module.exports = {
     AddUsersToTheParty: AddUsersToTheParty,
     getPartyByIdRestaurant: getPartyByIdRestaurant
 }
+  
 function getPartyByIdRestaurant(req) {
     return new Promise((resolve, reject) => {
         restaurantservice.getRestaurantById(req).then((response) => {
@@ -104,11 +105,17 @@ function getPageParty(req) {
 
 function getAllParty() {
     return new Promise((resolve, reject) => {
-        Party.find().exec(function (err, response) {
+        var dateNow = new Date();
+        var dateNowConvert = dateNow.getFullYear()+'-'+dateNow.getMonth()+'-'+dateNow.getDay();
+        Party.find({
+        }).exec(function (err, response) {
             if (err) {
                 reject(err)
             } else {
-                resolve(response);
+                var result = response.find(function(element){
+                    return element.dateStart >= dateNowConvert;
+                })
+                resolve(result);
             }
         })
     });
@@ -202,10 +209,15 @@ function deleteParty(req) {
 
 function createParty(req) {
     return new Promise((resolve, reject) => {
-        restaurantservice.getRestaurantById(req).then((response) => {
+        var restaurant ={
+            id:req.idRestaurant
+        }
+        restaurantservice.getRestaurantById(restaurant).then((response) => {
+            var dateNow = new Date();
+            var dateNowConvert = dateNow.getFullYear()+'-'+dateNow.getMonth()+'-'+dateNow.getDay();
             if (response) {
                 if (response) {
-                    if (new Date(req.dateStart) >= (new Date())) {
+                    if (req.dateStart >= dateNowConvert) {
                         var newParty = new Party({
                             titel: req.titel,
                             field: req.field,
@@ -214,7 +226,7 @@ function createParty(req) {
                             status: true,
                             timeStart: req.timeStart,
                             timeEnd: req.timeEnd,
-                            dateStart: new Date(req.dateStart),
+                            dateStart: req.dateStart,
                             idRestaurant: req.idRestaurant,
                             listUser: [
                                 {

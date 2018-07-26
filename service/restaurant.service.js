@@ -256,38 +256,45 @@ function deleteRestaurant(req) {
 
 function createRestaurant(req) {
     return new Promise((resolve, reject) => {
-        TypeFoodService.getTypeFoodById(req.typeFood).then(function (response) {
-            if (response) {
-                Restaurant.findOne({
-                    name: req.name
-                }).exec(function (err, response) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        if (response) {
-                            reject({
-                                statusCode: message.STATUS_CODE.ERROR,
-                                message: message.ERROR_MESSAGE.RESTAURANT.RESTAURANT_IS_EXITS
-                            });
+        if (req.image) {
+            reject({
+                statusCode: message.STATUS_CODE.ERROR,
+                message: message.ERROR_MESSAGE.RESTAURANT.IMAGE_ERROR
+            })
+        } else {
+            TypeFoodService.getTypeFoodById(req.typeFood).then(function (response) {
+                if (response) {
+                    Restaurant.findOne({
+                        name: req.name
+                    }).exec(function (err, response) {
+                        if (err) {
+                            reject(err);
                         } else {
-                            req.createAt = new Date();
-                            var newRestaurant = new Restaurant(req);
-                            newRestaurant.save(function (err, response) {
-                                if (err) {
-                                    reject(err);
-                                } else {
-                                    resolve({
-                                        statusCode: 201,
-                                        message: message.SUCCESS_MESSAGE.RESTAURANT.RESTAURANT_FOOD_CREATED
-                                    });
-                                }
-                            });
+                            if (response) {
+                                reject({
+                                    statusCode: message.STATUS_CODE.ERROR,
+                                    message: message.ERROR_MESSAGE.RESTAURANT.RESTAURANT_IS_EXITS
+                                });
+                            } else {
+                                req.createAt = new Date();
+                                var newRestaurant = new Restaurant(req);
+                                newRestaurant.save(function (err, response) {
+                                    if (err) {
+                                        reject(err);
+                                    } else {
+                                        resolve({
+                                            statusCode: 201,
+                                            message: message.SUCCESS_MESSAGE.RESTAURANT.RESTAURANT_FOOD_CREATED
+                                        });
+                                    }
+                                });
+                            }
                         }
-                    }
-                });
-            }
-        }).catch(function (err) {
-            reject(err)
-        });
+                    });
+                }
+            }).catch(function (err) {
+                reject(err)
+            });
+        }
     });
 }

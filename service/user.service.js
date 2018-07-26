@@ -294,7 +294,7 @@ function getUserById(req,) {
 
 async function getAllUser() {
     let result = await User.find({});
-    return result
+    return result;
 }
 
 function createUser(request) {
