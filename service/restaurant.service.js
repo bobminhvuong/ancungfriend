@@ -282,10 +282,7 @@ function createRestaurant(req) {
                                     if (err) {
                                         reject(err);
                                     } else {
-                                        resolve({
-                                            statusCode: 201,
-                                            message: message.SUCCESS_MESSAGE.RESTAURANT.RESTAURANT_FOOD_CREATED
-                                        });
+                                        resolve(response);
                                     }
                                 });
                             }
