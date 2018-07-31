@@ -16,16 +16,12 @@ function getInfomationUserUsing(token) {
     return new Promise((resolve, reject) => {
         jwt.verify(token, function (err, deCodeData) {
             resolve(deCodeData)
-        })
+        });
     });
 }
 
 function getAllPartyNotUsed(req,res){
-    partyService.getAllPartyNotUsed().then(function(response){
-        res.send(response)
-    }).catch(function(err){
-        res.send(err)
-    })
+  
 }
 
 function getAllParty(req, res) {
@@ -42,7 +38,13 @@ function getAllParty(req, res) {
             res.send(err);
         })
     }
-    else {
+    else if(req.query.status){
+        partyService.getAllPartyNotUsed(req.query.status).then(function(response){
+            res.send(response)
+        }).catch(function(err){
+            res.send(err)
+        });
+    }else {
         partyService.getAllParty().then((response) => {
             res.send(response);
         }).catch((err) => {

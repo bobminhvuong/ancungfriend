@@ -111,28 +111,22 @@ function getAllParty() {
             if (err) {
                 reject(err)
             } else {
-                var result = response.find(function (element) {
-                    return element.dateStart >= dateNowConvert;
-                })
-                resolve(result);
+                resolve(response);
             }
         })
     });
 }
 
 
-function getAllPartyNotUsed() {
+function getAllPartyNotUsed(req) {
     return new Promise((resolve, reject) => {
         Party.find({
-            dateStart: true
+            status: req
         }).exec(function (err, response) {
             if (err) {
                 reject(err)
             } else {
-                var result = response.find(function (element) {
-                    return element.dateStart >= dateNowConvert;
-                })
-                resolve(result);
+                resolve(response);
             }
         })
     });
@@ -231,10 +225,9 @@ function createParty(req) {
         }
         restaurantservice.getRestaurantById(restaurant).then((response) => {
             var dateNow = new Date();
-            var dateNowConvert = dateNow.getFullYear() + '-' + dateNow.getMonth() + '-' + dateNow.getDay();
             if (response) {
                 if (response) {
-                    if (req.dateStart >= dateNowConvert) {
+                    if (new Date(req.dateStart) >= new Date()) {
                         var newParty = new Party({
                             titel: req.titel,
                             field: req.field,

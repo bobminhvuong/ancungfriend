@@ -2060,6 +2060,16 @@
         "title": "Example usage get page:",
         "content": "curl -i http://localhost/api/party?page=1&&limit=10",
         "type": "curl"
+      },
+      {
+        "title": "Example usage get party status = true:",
+        "content": "curl -i http://localhost/api/party?status=true",
+        "type": "curl"
+      },
+      {
+        "title": "Example usage get party status = false:",
+        "content": "curl -i http://localhost/api/party?status=false",
+        "type": "curl"
       }
     ],
     "success": {

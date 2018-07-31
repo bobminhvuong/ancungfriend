@@ -8,6 +8,5 @@ module.exports = function () {
     router.delete('/:id', auth, partyController.deleteParty);
     router.post('/', auth, partyController.createParty);
     router.post('/joinParty/:id', auth, partyController.AddUsersToTheParty);//idRestaurant
-    router.get('/forthcoming', auth, partyController.getAllPartyNotUsed);
     return router;
 }

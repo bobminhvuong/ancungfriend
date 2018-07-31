@@ -214,8 +214,15 @@
  * @apiExample {curl} Example usage:
  *      curl -i http://localhost/api/party
  *
- *  * @apiExample {curl} Example usage get page:
+ * @apiExample {curl} Example usage get page:
  *      curl -i http://localhost/api/party?page=1&&limit=10
+ * 
+ * @apiExample {curl} Example usage get party status = true:
+ *      curl -i http://localhost/api/party?status=true
+ * 
+ * 
+ * @apiExample {curl} Example usage get party status = false:
+ *      curl -i http://localhost/api/party?status=false
  * 
  * 
  * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
