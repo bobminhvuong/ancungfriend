@@ -95,11 +95,15 @@ function addfriend(req, myId) {
                         reject(err)
                     } else {
                         if (response) {
-                            //Kiểm tra đã đánh giá hay chưa
-                            var checkMadeFriends = _.filter(response.friend, { id_friend: req.id_friend });
-                            if (checkMadeFriends.length <= 0) {
+                            console.log(myId );
+                            
+                            //Kiểm tra đã kết bạn hay chưa
+                            var checkMadeFriends = _.filter(response.friend, { id_friend: req.id });
+                            console.log(checkMadeFriends);
+                            
+                            if (checkMadeFriends.length == 0) {
                                 response.friend.push({
-                                    id_friend: req.id_friend,
+                                    id_friend: req.id,
                                     follow: true
                                 });
                                 response.save(function (err, dataFriend) {
@@ -107,7 +111,7 @@ function addfriend(req, myId) {
                                         reject(err)
                                     } else {
                                         //gọi lại hàm kết bạn lại
-                                        addfriend({ id_friend: myId }, req.id_friend)
+                                        addfriend({ id: myId }, req.id)
 
                                         resolve({
                                             statusCode: message.STATUS_CODE.SUCCES,
