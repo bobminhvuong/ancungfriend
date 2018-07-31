@@ -15,6 +15,7 @@ app.use(bodyParser.json())
 app.use(fileUpload());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/apidocs', express.static(path.join(__dirname, 'apidocs')));
+
   
 //Api
 app.use(config.BASE_URL+'/user', require('./routes/user.route')());
@@ -25,7 +26,5 @@ app.use(config.BASE_URL+'/typefood', require('./routes/typefood.route')());
 app.use('/',function(req,res){
     res.status(301).redirect("https://ancungfriend.herokuapp.com/apidocs/index.html")
 })
-
-// process.env.PORT || 
-app.listen(config.PORT,console.log('serve is listening port '+config.PORT));
+app.listen(process.env.PORT || config.PORT,console.log('serve is listening port '+config.PORT));
 
