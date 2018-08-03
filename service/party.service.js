@@ -45,7 +45,7 @@ function AddUsersToTheParty(req) {
         Party.findOne({
             _id: req.id
         }).exec(function (err, response) {
-            if (response.listUser.length == response.currentNumber) {
+            if (response.listUser.length <= response.currentNumber) {
                 reject({
                     statusCode: message.STATUS_CODE.ERROR,
                     message: message.ERROR_MESSAGE.PARTY.PARTY_ALREADY_FULL
