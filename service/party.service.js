@@ -12,7 +12,7 @@ module.exports = {
     getPageParty: getPageParty,
     AddUsersToTheParty: AddUsersToTheParty,
     getPartyByIdRestaurant: getPartyByIdRestaurant,
-    getAllPartyNotUsed:getAllPartyNotUsed
+    getAllPartyNotUsed: getAllPartyNotUsed
 }
 
 function getPartyByIdRestaurant(req) {
@@ -45,25 +45,20 @@ function AddUsersToTheParty(req) {
         Party.findOne({
             _id: req.id
         }).exec(function (err, response) {
-            if (response.listUser.length <= response.numberMax) {
-                reject({
-                    statusCode: message.STATUS_CODE.ERROR,
-                    message: message.ERROR_MESSAGE.PARTY.PARTY_ALREADY_FULL
-                });
+            if (err) {
+                reject(err);
             } else {
-                if (err) {
-                    reject(err);
-                } else {
-                    if (response) {
-                        var checkUser = _.find(response.listUser, function (item) {
-                            return item.id = req.id
+                if (response) {
+                    if (response.listUser.length > response.numberMax) {
+                        reject({
+                            statusCode: message.STATUS_CODE.ERROR,
+                            message: message.ERROR_MESSAGE.PARTY.PARTY_ALREADY_FULL
                         });
-                        if (checkUser) {
-                            reject({
-                                statusCode: message.STATUS_CODE.ERROR,
-                                message: message.ERROR_MESSAGE.USER.USER_REGISTERED
-                            });
-                        } else {
+                    } else {
+                        var checkUser = response.listUser.filter(function (item) {
+                            return item.id == req.myId
+                        });
+                        if (checkUser.length == 0) {
                             response.listUser.push({
                                 id: req.myId,
                                 leader: false
@@ -76,13 +71,19 @@ function AddUsersToTheParty(req) {
                                     resolve(pratyUpdate);
                                 }
                             });
+                        } else {
+                            reject({
+                                statusCode: message.STATUS_CODE.ERROR,
+                                message: message.ERROR_MESSAGE.USER.USER_REGISTERED
+                            });
                         }
-                    } else {
-                        reject({
-                            statusCode: message.STATUS_CODE.NOT_FOUND,
-                            message: message.ERROR_MESSAGE.RESTAURANT.RESTAURANT_NOT_FOUND
-                        })
                     }
+
+                } else {
+                    reject({
+                        statusCode: message.STATUS_CODE.NOT_FOUND,
+                        message: message.ERROR_MESSAGE.RESTAURANT.RESTAURANT_NOT_FOUND
+                    })
                 }
             }
         });
@@ -274,10 +275,10 @@ checkparty();
 function checkparty() {
     var dateNow = new Date();
     Party.find({
-        status:true
-    }).exec(function(err,response){
+        status: true
+    }).exec(function (err, response) {
         response.forEach(element => {
-            if(element.dateStart < dateNow){
+            if (element.dateStart < dateNow) {
                 element.status = false;
                 element.save();
             }
