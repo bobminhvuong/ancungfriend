@@ -344,7 +344,7 @@
  //-----------------------------------------------------------
 
   /**
- * @api {post} api/addfriend ADDFRIEND
+ * @api {post} api/addfriend DELETE FRIEND
  * @apiDescription API addfriend
  * @apiVersion 0.0.1
  * @apiName addfriend
