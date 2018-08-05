@@ -12,9 +12,37 @@ module.exports = {
     getUserByEmail: getUserByEmail,
     addfriend: addfriend,
     sendMail: sendMail,
-    createAdmin:createAdmin
+    createAdmin:createAdmin,
+    inviteFriend:inviteFriend,
+    deletefriend:deletefriend
+}
+function deletefriend(req, res) {
+    getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
+        if (deCodeData) {
+            userService.deletefriend(req.params, deCodeData._id)
+                .then(function (response) {
+                    res.send(response);
+                })
+                .catch(function (err) {
+                    res.send(err);
+                });
+        }
+    })
 }
 
+function inviteFriend(req, res) {
+    getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
+        if (deCodeData) {
+            req.body.myId = deCodeData._id;
+            req.body.name = deCodeData.name;
+            userService.inviteFriend(req.body).then(function (response) {
+                res.send(response)
+            }).catch(function (err) {
+                res.send(err)
+            });
+        }
+    });
+}
 
 function sendMail(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {

@@ -9,7 +9,21 @@ module.exports = {
     deleteParty: deleteParty,
     createParty: createParty,
     AddUsersToTheParty: AddUsersToTheParty,
-    getAllPartyNotUsed:getAllPartyNotUsed
+    getAllPartyNotUsed:getAllPartyNotUsed,
+    deleteUsersToTheParty:deleteUsersToTheParty
+}
+
+function deleteUsersToTheParty(req, res) {
+    getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
+        if (deCodeData) {
+            req.params.myId = deCodeData._id;
+            partyService.deleteUsersToTheParty(req.params).then((response) => {
+                res.send(response);
+            }).catch((err) => {
+                res.send(err)
+            })
+        }
+    });
 }
 
 function getInfomationUserUsing(token) {

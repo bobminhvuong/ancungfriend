@@ -1,15 +1,16 @@
 {
-    "PORT": "3000",
+    "PORT": 3000,
     "BASE_URL": "/api",
     "mongodb": {
         "host": "localhost:27017",
-        "hostweb":"mongodb://admin:minhvuong@123@ds141661.mlab.com:41661/ancung",
+        "hostweb": "mongodb://admin:minhvuong@123@ds141661.mlab.com:41661/ancung",
         "database": "ancung"
     },
-    "TOKEN":"x-access-token",
-    "MAIL":{
-        "SERVICE":"Gmail",
-        "USERNAME":"bob.minhvuong@gmail.com",
-        "PASSWORD":"minhvuong15014811"
+    "TOKEN": "x-access-token",
+    "timeToken": 86400,
+    "MAIL": {
+        "SERVICE": "Gmail",
+        "USERNAME": "bob.minhvuong@gmail.com",
+        "PASSWORD": "minhvuong15014811"
     }
 }

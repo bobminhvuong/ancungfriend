@@ -12,7 +12,8 @@ module.exports = {
     getPageParty: getPageParty,
     AddUsersToTheParty: AddUsersToTheParty,
     getPartyByIdRestaurant: getPartyByIdRestaurant,
-    getAllPartyNotUsed: getAllPartyNotUsed
+    getAllPartyNotUsed: getAllPartyNotUsed,
+    deleteUsersToTheParty: deleteUsersToTheParty
 }
 
 function getPartyByIdRestaurant(req) {
@@ -39,6 +40,51 @@ function getPartyByIdRestaurant(req) {
 
 }
 
+function deleteUsersToTheParty(req) {
+    return new Promise((resolve, reject) => {
+        Party.findOne({
+            _id: req.id
+        }).exec(function (err, response) {
+            if (err) {
+                reject(err)
+            } else {
+                if (response) {
+                    var checkleader = response.listUser.filter(function (item) {
+                        return item.id == req.myId;
+                    });
+                    var newUser = response.listUser.filter(function (item) {
+                        return item.id != req.myId
+                    });
+                    
+                    if (checkleader.leader == true) {
+                        reject({
+                            statusCode: message.STATUS_CODE.ERROR,
+                            message: message.ERROR_MESSAGE.USER.USER_NOT_OUT
+                        })
+                    } else {
+                        
+                        response.listUser = newUser;
+                        response.currentNumber = response.currentNumber - 1;
+                        response.save(function (err, response) {
+                            if (err) {
+                                reject(err)
+                            } else {
+                                resolve(response)
+                            }
+
+                        })
+                    }
+
+                } else {
+                    reject({
+                        statusCode: message.STATUS_CODE.NOT_FOUND,
+                        message: message.ERROR_MESSAGE.PARTY.PARTY_NOT_FOUND
+                    });
+                }
+            }
+        });
+    });
+}
 
 function AddUsersToTheParty(req) {
     return new Promise((resolve, reject) => {

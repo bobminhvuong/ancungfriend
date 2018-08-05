@@ -7,6 +7,8 @@ var config = require('./../config');
 var handlebars = require('handlebars');
 var fs = require('fs');
 var genericService = require('./../service/generic.service');
+var partyService = require('./../service/party.service');
+var restaurantService = require('./../service/restaurant.service');
 
 module.exports = {
     getAllUser: getAllUser,
@@ -18,8 +20,153 @@ module.exports = {
     createUser: createUser,
     addfriend: addfriend,
     sendMail: sendMail,
-    createAdmin: createAdmin
+    createAdmin: createAdmin,
+    inviteFriend: inviteFriend,
+    deletefriend: deletefriend
 }
+
+function deletefriend(req, myId) {
+    return new Promise((resolve, reject) => {
+        User.findOne({
+            _id: req.id
+        }).exec(function (err, userFriend) {
+            if (userFriend) {
+                User.findOne({
+                    _id: myId
+                }).exec(function (err, response) {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        if (response) {
+                            //Kiểm tra đã kết bạn hay chưa
+                            var checkMadeFriends = response.friend.filter(function(item){
+                                return item.id_friend == req.id
+                            });
+                            if (checkMadeFriends.length == 0) {
+                                reject({
+                                    statusCode: message.STATUS_CODE.ERROR,
+                                    message: message.ERROR_MESSAGE.USER.USER_EXIST
+                                })
+                            } else {
+                                var dataRemovedUser = response.friend.filter(function (item) {
+                                    return item.id_friend != req.id
+                                })
+                                response.friend = dataRemovedUser;
+                                response.save(function (err, response) {
+                                    if (err) {
+                                        reject(err)
+                                    } else {
+                                        deletefriend({ id: myId }, req.id);
+                                        resolve({
+                                            message: message.STATUS_CODE.SUCCES,
+                                            message: message.ERROR_MESSAGE.USER.USER_FRIEND_DELETED
+                                        });
+                                    }
+                                })
+                            }
+                        } else {
+                            reject({
+                                statusCode: message.STATUS_CODE.NOT_FOUND,
+                                message: message.ERROR_MESSAGE.USER.USER_NOT_FOUND
+                            })
+                        }
+                    }
+                });
+            } else {
+                reject({
+                    message: message.STATUS_CODE.NOT_FOUND,
+                    message: message.ERROR_MESSAGE.USER.USER_FRIEND_NOT_FOUND
+                })
+            }
+        })
+    });
+}
+
+function inviteFriend(req) {
+    // Cấu hình đọc file template html
+    var readHTMLFile = function (path, callback) {
+        fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
+            if (err) {
+                throw err;
+                callback(err);
+            }
+            else {
+                callback(null, html);
+            }
+        });
+    };
+    // Cấu hình người gửi mail
+    var transporter = nodemailer.createTransport({ // config mail server
+        service: config.MAIL.SERVICE,
+        auth: {
+            user: config.MAIL.USERNAME,
+            pass: config.MAIL.PASSWORD
+        }
+    });
+    return new Promise((resolve, reject) => {
+        User.findOne({
+            _id: req.myId
+        }).exec(function (err, userData) {
+            if (err) {
+                reject(err)
+            } else {
+                partyService.getPartyById({ id: req.idParty }).then((party) => {
+                    restaurantService.getRestaurantById({id: party.idRestaurant}).then(function(restaurant){
+                        if(restaurant){
+                            readHTMLFile(__dirname + './../public/templateMail/mailv2.html', function (err, html) {
+                                var template = handlebars.compile(html);
+                                var replacements = {
+                                    username: userData.name,
+                                    titel: party.titel,
+                                    timeStart: party.timeStart,
+                                    timeEnd: party.timeEnd,
+                                    dateStart: party.dateStart,
+                                    urlParty: "https://www.facebook.com/",
+                                    description: party.field,
+                                    currentnumber: party.currentNumber,
+                                    numberMax: party.numberMax,
+                                    linkUrl:req.linkUrl,
+                                    restaurant: restaurant.name,
+                                    address: restaurant.address
+                                };
+                                var urlTemplate = template(replacements);
+                                var nameUserSend = userData.name.toUpperCase();
+                                var nameParty = party.titel.toUpperCase();
+                                // Cấu hình người nhận mail
+                                var mailOptions = {
+                                    from: config.MAIL.USERNAME,
+                                    to: req.email,
+                                    subject: nameUserSend + ' ĐÃ MỜI BẠN THAM GIA BỮA TIỆC ' + nameParty,
+                                    html: urlTemplate
+                                };
+                                transporter.sendMail(mailOptions, function (err, info) {
+                                    if (err) {
+                                        reject(err)
+                                    } else {
+                                        if (info) {
+                                            resolve({
+                                                statusCode: message.STATUS_CODE.ACCEPTED,
+                                                message: message.SUCCESS_MESSAGE.USER.SENT_MAIL
+                                            });
+                                        }
+                                    }
+                                });
+                            });
+                        }else{
+                            reject({
+                                statusCode: message.statusCode.NOT_FOUND,
+                                message: message.ERROR_MESSAGE.RESTAURANT.NOT_FOUND
+                            })
+                        }
+                    })
+                }).catch((err) => {
+                    reject(err)
+                })
+            }
+        });
+    });
+}
+
 
 function sendMail(req) {
     // Cấu hình đọc file template html
@@ -95,12 +242,12 @@ function addfriend(req, myId) {
                         reject(err)
                     } else {
                         if (response) {
-                            console.log(myId );
-                            
+                            console.log(myId);
+
                             //Kiểm tra đã kết bạn hay chưa
                             var checkMadeFriends = _.filter(response.friend, { id_friend: req.id });
                             console.log(checkMadeFriends);
-                            
+
                             if (checkMadeFriends.length == 0) {
                                 response.friend.push({
                                     id_friend: req.id,
@@ -273,7 +420,7 @@ function updateUser(request) {
     });
 }
 
-function getUserById(req,) {
+function getUserById(req, ) {
     return new Promise((resolve, reject) => {
         User.findOne({
             _id: req.id

@@ -221,6 +221,61 @@
  */
 
  //-----------------------------------------------
+ 
+/**
+ * @api {delete} api/party/joinParty:id DELETE PARTY
+ * @apiDescription API Delete join party
+ * @apiVersion 0.0.1
+ * @apiName delete join party
+ * @apiGroup PARTY
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/party/joinParty/:id
+ *
+ * @apiHeader (Request Header) {String} x-access-token token
+ *
+ * @apiParam (Request Params) {String} id party id
+ * 
+ * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
+ * @apiSuccess (Response Body 200) {String} message Message
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+ *    "listUser": [
+ *      {
+ *            "_id": "5b595299abf652459c662ee9",
+ *            "id": "5b51a2cb20cdeb044083013b",
+ *            "leader": true
+ *      },
+ *        {
+ *            "_id": "5b6511a35d0d7a00208195d1",
+ *            "id": "5b56b004906ae50020888ce0",
+            "leader": false
+        }
+    ],
+    "_id": "5b595299abf652459c662ee8",
+    "titel": "test fix date ",
+    "field": "Mô tả",
+    "numberMax": 5,
+    "currentNumber": 2,
+    "status": false,
+    "timeStart": "5h30",
+    "timeEnd": "6h30",
+    "dateStart": "2018-06-25T17:00:00.000Z",
+    "idRestaurant": "5b5459837c82af0020002fb4",
+    "createAt": "2018-07-26T04:48:25.080Z",
+    "__v": 5
+}
+ *
+ * @apiError (Response Body 404) {String} message Error message
+ * @apiErrorExample {json} Error-404-Response:
+ *  {
+ *       "statusCode": 404,
+ *       "message": "PARTY_NOT_FOUND"
+ * }
+ */
+//----------------------------------------
+
  /**
  * @api {post} api/party/:id JOIN USER PARTY
  * @apiDescription API 

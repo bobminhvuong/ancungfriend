@@ -310,6 +310,100 @@
   },
   {
     "type": "delete",
+    "url": "api/party/joinParty:id",
+    "title": "DELETE PARTY",
+    "description": "<p>API Delete join party</p>",
+    "version": "0.0.1",
+    "name": "delete_join_party",
+    "group": "PARTY",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/party/joinParty/:id",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Request Params": [
+          {
+            "group": "Request Params",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>party id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Header 200": [
+          {
+            "group": "Response Header 200",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>Content Type</p>"
+          }
+        ],
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   {\n   \"listUser\": [\n     {\n           \"_id\": \"5b595299abf652459c662ee9\",\n           \"id\": \"5b51a2cb20cdeb044083013b\",\n           \"leader\": true\n     },\n       {\n           \"_id\": \"5b6511a35d0d7a00208195d1\",\n           \"id\": \"5b56b004906ae50020888ce0\",\n            \"leader\": false\n        }\n    ],\n    \"_id\": \"5b595299abf652459c662ee8\",\n    \"titel\": \"test fix date \",\n    \"field\": \"Mô tả\",\n    \"numberMax\": 5,\n    \"currentNumber\": 2,\n    \"status\": false,\n    \"timeStart\": \"5h30\",\n    \"timeEnd\": \"6h30\",\n    \"dateStart\": \"2018-06-25T17:00:00.000Z\",\n    \"idRestaurant\": \"5b5459837c82af0020002fb4\",\n    \"createAt\": \"2018-07-26T04:48:25.080Z\",\n    \"__v\": 5\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Response Body 404": [
+          {
+            "group": "Response Body 404",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Error message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-404-Response:",
+          "content": " {\n      \"statusCode\": 404,\n      \"message\": \"PARTY_NOT_FOUND\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/party.document.js",
+    "groupTitle": "PARTY"
+  },
+  {
+    "type": "delete",
     "url": "api/party/:id",
     "title": "DELETE PARTY",
     "description": "<p>API Delete party</p>",
@@ -3166,6 +3260,90 @@
     "groupTitle": "User"
   },
   {
+    "type": "delete",
+    "url": "api/addfriend",
+    "title": "ADDFRIEND",
+    "description": "<p>API deletefriend</p>",
+    "version": "0.0.1",
+    "name": "delete_friend",
+    "group": "User",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/addfriend/:id",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Request Params": [
+          {
+            "group": "Request Params",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n     \"friend\": [],\n     \"_id\": \"5b66b3fca2ce753428c8656d\",\n     \"email\": \"vuong1@gmail.com\",\n     \"name\": \"GalaxyPham\",\n     \"salt\": \"CxAFCGvmRD0lfrgZWqei\",\n     \"password\": \"C9fjSiaMUoiZVZVwL/y1ZzSvwVqzwC9/BOJZhIIBBScJj4Y6kt155Lki8K9WzdxSzER9nfIZgsZP2SJO+BHRaFwi9xDYCP7H8wT20h10hyZYebxIh9Sb/EcLAaloyJg14HNKbLC2xUWa5FH5o+uFhmnqlyGkMnPgmmbd6UUp2qQ=\",\n     \"sex\": \"male\",\n     \"phone\": \"949022004\",\n     \"role\": \"USER\",\n     \"createAt\": \"2018-08-05T08:23:24.094Z\",\n     \"__v\": 21\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Response Body 401": [
+          {
+            "group": "Response Body 401",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Error message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-401-Response:",
+          "content": " {\n     \"statusCode\": 400,\n        \"message\": \"USER_EXIST\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/user.document.js",
+    "groupTitle": "User"
+  },
+  {
     "type": "get",
     "url": "api/user",
     "title": "GET ALL USER",
@@ -3484,6 +3662,99 @@
         {
           "title": "Error-404-Response:",
           "content": " {\n     \"statusCode\":404,\n     \"message\": \"USER_NOT_FOUND\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/user.document.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "api/user/invitefriend",
+    "title": "SEND MAIL",
+    "description": "<p>API send mail (gửi lời mời đến party)</p>",
+    "version": "0.0.1",
+    "name": "invitefriend",
+    "group": "User",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/user/sendemail",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Request mail": [
+          {
+            "group": "Request mail",
+            "type": "String",
+            "optional": false,
+            "field": "mail",
+            "description": "<p>User Email User</p>"
+          }
+        ],
+        "Request idParty": [
+          {
+            "group": "Request idParty",
+            "type": "String",
+            "optional": false,
+            "field": "mail",
+            "description": "<p>User Email User</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"statusCode\": 202,\n    \"message\": \"SENT_MAIL_SUCCESSFULLY\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Response Body 401": [
+          {
+            "group": "Response Body 401",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Error message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-401-Response:",
+          "content": " {\n     \"statusCode\": 401,\n        \"message\": \"EMAIL_INVALID\"\n}",
           "type": "json"
         }
       ]

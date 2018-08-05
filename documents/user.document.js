@@ -373,6 +373,47 @@
  */
 
  //------------------------------------------------
+
+ 
+  /**
+ * @api {delete} api/addfriend ADDFRIEND
+ * @apiDescription API deletefriend
+ * @apiVersion 0.0.1
+ * @apiName delete friend
+ * @apiGroup User
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/addfriend/:id
+ *
+ * @apiHeader (Request Header) {String} x-access-token token
+ * @apiParam (Request Params) {String} id User id
+ * 
+ * @apiSuccess (Response Body 200) {String} message Message
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+        "friend": [],
+        "_id": "5b66b3fca2ce753428c8656d",
+        "email": "vuong1@gmail.com",
+        "name": "GalaxyPham",
+        "salt": "CxAFCGvmRD0lfrgZWqei",
+        "password": "C9fjSiaMUoiZVZVwL/y1ZzSvwVqzwC9/BOJZhIIBBScJj4Y6kt155Lki8K9WzdxSzER9nfIZgsZP2SJO+BHRaFwi9xDYCP7H8wT20h10hyZYebxIh9Sb/EcLAaloyJg14HNKbLC2xUWa5FH5o+uFhmnqlyGkMnPgmmbd6UUp2qQ=",
+        "sex": "male",
+        "phone": "949022004",
+        "role": "USER",
+        "createAt": "2018-08-05T08:23:24.094Z",
+        "__v": 21
+    }
+ *
+ * @apiError (Response Body 401) {String} message Error message
+ * @apiErrorExample {json} Error-401-Response:
+ *  {
+ *      "statusCode": 400,
+        "message": "USER_EXIST"
+ * }
+ */
+
+ //------------------------------------------------
    /**
  * @api {post} api/user/sendemail SEND MAIL
  * @apiDescription API send mail (gửi lời mời đến ứng dụng)
@@ -385,6 +426,38 @@
  *
  * @apiHeader (Request Header) {String} x-access-token token
  * @apiParam (Request mail) {String} mail User Email User
+ * 
+ * @apiSuccess (Response Body 200) {String} message Message
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *    {
+ *        "statusCode": 202,
+ *        "message": "SENT_MAIL_SUCCESSFULLY"
+ *    }
+ *
+ * @apiError (Response Body 401) {String} message Error message
+ * @apiErrorExample {json} Error-401-Response:
+ *  {
+ *      "statusCode": 401,
+        "message": "EMAIL_INVALID"
+ * }
+ */
+
+ 
+ //------------------------------------------------
+   /**
+ * @api {post} api/user/invitefriend SEND MAIL
+ * @apiDescription API send mail (gửi lời mời đến party)
+ * @apiVersion 0.0.1
+ * @apiName invitefriend
+ * @apiGroup User
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/user/sendemail
+ *
+ * @apiHeader (Request Header) {String} x-access-token token
+ * @apiParam (Request mail) {String} mail User Email User
+ * @apiParam (Request idParty) {String} mail User Email User
  * 
  * @apiSuccess (Response Body 200) {String} message Message
  *
