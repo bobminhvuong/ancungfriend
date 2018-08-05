@@ -280,18 +280,17 @@
  */
 
 /**
- * @api {get} api/party/forthcoming GET PARTY FORTHCOMMING
+ * @api {get} api/party?status=true GET PARTY FORTHCOMMING
  * @apiDescription API get forthComming
  * @apiVersion 0.0.1
  * @apiName get forthComming
  * @apiGroup UPDATE
  *
  * @apiExample {curl} Example usage:
- *      curl -i http://localhost/api/party/forthComming
+ *      curl -i http://localhost/api/party?status=true
  *
  * @apiHeader (Request Header) {String} x-access-token token
  *
- * @apiParam (Request Params) {String} id User id
  * 
  * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
  * @apiSuccess (Response Body 200) {String} message Message

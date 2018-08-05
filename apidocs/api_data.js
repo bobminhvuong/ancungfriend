@@ -2278,7 +2278,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "api/party/forthcoming",
+    "url": "api/party?status=true",
     "title": "GET PARTY FORTHCOMMING",
     "description": "<p>API get forthComming</p>",
     "version": "0.0.1",
@@ -2287,7 +2287,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "curl -i http://localhost/api/party/forthComming",
+        "content": "curl -i http://localhost/api/party?status=true",
         "type": "curl"
       }
     ],
@@ -2300,19 +2300,6 @@ define({ "api": [
             "optional": false,
             "field": "x-access-token",
             "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Request Params": [
-          {
-            "group": "Request Params",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>User id</p>"
           }
         ]
       }
