@@ -3672,7 +3672,7 @@
   {
     "type": "post",
     "url": "api/user/invitefriend",
-    "title": "SEND MAIL",
+    "title": "INVITEFRIEND MAIL",
     "description": "<p>API send mail (gửi lời mời đến party)</p>",
     "version": "0.0.1",
     "name": "invitefriend",
@@ -3680,7 +3680,7 @@
     "examples": [
       {
         "title": "Example usage:",
-        "content": "curl -i http://localhost/api/user/sendemail",
+        "content": "curl -i http://localhost/api/user/invitefriend",
         "type": "curl"
       }
     ],
@@ -3705,7 +3705,7 @@
             "type": "String",
             "optional": false,
             "field": "mail",
-            "description": "<p>User Email User</p>"
+            "description": "<p>User Email User Invite Friend</p>"
           }
         ],
         "Request idParty": [
@@ -3713,8 +3713,8 @@
             "group": "Request idParty",
             "type": "String",
             "optional": false,
-            "field": "mail",
-            "description": "<p>User Email User</p>"
+            "field": "idParty",
+            "description": "<p>id Party</p>"
           }
         ]
       }

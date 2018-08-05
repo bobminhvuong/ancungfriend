@@ -446,18 +446,18 @@
  
  //------------------------------------------------
    /**
- * @api {post} api/user/invitefriend SEND MAIL
+ * @api {post} api/user/invitefriend INVITEFRIEND MAIL
  * @apiDescription API send mail (gửi lời mời đến party)
  * @apiVersion 0.0.1
  * @apiName invitefriend
  * @apiGroup User
  *
  * @apiExample {curl} Example usage:
- *      curl -i http://localhost/api/user/sendemail
+ *      curl -i http://localhost/api/user/invitefriend
  *
  * @apiHeader (Request Header) {String} x-access-token token
- * @apiParam (Request mail) {String} mail User Email User
- * @apiParam (Request idParty) {String} mail User Email User
+ * @apiParam (Request mail) {String} mail User Email User Invite Friend
+ * @apiParam (Request idParty) {String} idParty id Party 
  * 
  * @apiSuccess (Response Body 200) {String} message Message
  *
