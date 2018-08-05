@@ -3262,7 +3262,7 @@ define({ "api": [
   {
     "type": "delete",
     "url": "api/addfriend",
-    "title": "ADDFRIEND",
+    "title": "DELETEFRIEND",
     "description": "<p>API deletefriend</p>",
     "version": "0.0.1",
     "name": "delete_friend",
