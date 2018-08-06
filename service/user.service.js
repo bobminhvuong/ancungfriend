@@ -135,7 +135,7 @@ function inviteFriend(req) {
                                 // Cấu hình người nhận mail
                                 var mailOptions = {
                                     from: config.MAIL.USERNAME,
-                                    to: req.mail,
+                                    to: req.email,
                                     subject: nameUserSend + ' ĐÃ MỜI BẠN THAM GIA BỮA TIỆC ' + nameParty,
                                     html: urlTemplate
                                 };
