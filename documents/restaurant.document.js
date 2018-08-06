@@ -351,14 +351,14 @@
  //-------------------------------------------
 
  /**
- * @api {post} api/restaurant/image/:id IMAGE RESTAURANT
+ * @api {post} /public/restaurant/:id IMAGE RESTAURANT
  * @apiDescription API image restaurant
  * @apiVersion 0.0.1
  * @apiName updateImageRestaurant
  * @apiGroup RESTAURANT
  *
  * @apiExample {curl} Example usage:
- *      curl -i http://localhost/api/restaurant/rate/599545c60548b62a678409b9
+ *      curl -i http://localhost/public/restaurant/599545c60548b62a678409b9.png
  *
  * @apiHeader (Request Header) {String} x-access-token token
  *

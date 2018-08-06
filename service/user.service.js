@@ -121,7 +121,7 @@ function inviteFriend(req) {
                                     timeStart: party.timeStart,
                                     timeEnd: party.timeEnd,
                                     dateStart: party.dateStart,
-                                    urlParty: "https://www.facebook.com/",
+                                    urlParty: req.linkUrl,
                                     description: party.field,
                                     currentnumber: party.currentNumber,
                                     numberMax: party.numberMax,
@@ -135,7 +135,7 @@ function inviteFriend(req) {
                                 // Cấu hình người nhận mail
                                 var mailOptions = {
                                     from: config.MAIL.USERNAME,
-                                    to: req.email,
+                                    to: req.mail,
                                     subject: nameUserSend + ' ĐÃ MỜI BẠN THAM GIA BỮA TIỆC ' + nameParty,
                                     html: urlTemplate
                                 };

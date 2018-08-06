@@ -59,7 +59,7 @@
 //---------------------------------------------------------------------
  
 /**
- * @api {get} api/party?idrestaurant=? GET PARTY BY ID RESTAURANT
+ * @api {get} api/party?idRestaurant=? GET PARTY BY ID RESTAURANT
  * @apiDescription API type food by idrestaurant
  * @apiVersion 0.0.1
  * @apiName get party by id restaurant
