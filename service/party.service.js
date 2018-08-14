@@ -27,34 +27,40 @@ function invitefriend(param, req) {
                 reject(err)
             } else {
                 if (response) {
-                    console.log(response);
-                    var checkUser = response.listUser.filter(item => item.id == req.idUser);
-                    if (checkUser.length > 0) {
+                    if (response.listUser.length == currentNumber) {
                         reject({
                             statusCode: message.STATUS_CODE.ERROR,
-                            message: message.ERROR_MESSAGE.USER.USER_INVITED
+                            message: message.ERROR_MESSAGE.USER.USER_MAX
                         })
                     } else {
-                        response.listUser.push({
-                            id: req.idUser,
-                            leader: false,
-                            invite: true,
-                            accept: false
-                        });
-                        response.save(function (err, party) {
-                            if (err) {
-                                reject(err)
-                            } else {
-                                userService.getUserById({ id: req.idUser }).then((result) => {
-                                    if (result) {
-                                        userService.inviteFriend({ email: response.email, idParty: party._id }).then((resultmail)=>{
+                        var checkUser = response.listUser.filter(item => item.id == req.idUser);
+                        if (checkUser.length > 0) {
+                            reject({
+                                statusCode: message.STATUS_CODE.ERROR,
+                                message: message.ERROR_MESSAGE.USER.USER_INVITED
+                            })
+                        } else {
+                            response.listUser.push({
+                                id: req.idUser,
+                                leader: false,
+                                invite: true,
+                                accept: false
+                            });
+                            response.save(function (err, party) {
+                                if (err) {
+                                    reject(err)
+                                } else {
+                                    userService.getUserById({ id: req.idUser }).then((result) => {
+                                        if (result) {
+                                            userService.inviteFriend({ email: response.email, idParty: party._id }).then((resultmail) => {
 
-                                        })
-                                    }
-                                })
-                                resolve(party)
-                            }
-                        })
+                                            })
+                                        }
+                                    })
+                                    resolve(party)
+                                }
+                            })
+                        }
                     }
                 } else {
                     reject({

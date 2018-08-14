@@ -12,7 +12,8 @@ module.exports = {
             IMAGE_USER_NOT_FOUND:'IMAGE_USER_NOT_FOUND',
             USER_REGISTERED:'USER_REGISTERED',
             USER_NOT_OUT:'USER_NOT_OUT_PARTY',
-            USER_INVITED:'USER_INVITED'
+            USER_INVITED:'USER_INVITED',
+            USER_MAX:'USER_MAX'
             
         },
         TYPE_FOOD:{
