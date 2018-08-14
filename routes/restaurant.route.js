@@ -9,5 +9,7 @@ module.exports = function () {
     router.post('/', require('./../middle-ware/auth').auth(), restaurantController.createRestaurant);
     router.post('/rate/:id', require('./../middle-ware/auth').auth(), restaurantController.updateRate);
     router.post('/image/:id', require('./../middle-ware/auth').auth(), restaurantController.updateImage);
+    router.get('/search', restaurantController.getRestaurantByName);
+    
     return router;
 }

@@ -1,4 +1,5 @@
 var partyService = require('./../service/party.service');
+var userService = require('./../service/user.service');
 var jwt = require('./../utils/jwt');
 var config = require('./../config');
 
@@ -9,10 +10,22 @@ module.exports = {
     deleteParty: deleteParty,
     createParty: createParty,
     AddUsersToTheParty: AddUsersToTheParty,
-    getAllPartyNotUsed:getAllPartyNotUsed,
-    deleteUsersToTheParty:deleteUsersToTheParty
+    getAllPartyNotUsed: getAllPartyNotUsed,
+    deleteUsersToTheParty: deleteUsersToTheParty,
+    invitefriend:invitefriend
 }
-
+function invitefriend(req,res){
+    getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
+        if (deCodeData) {
+            req.params.myId = deCodeData._id;
+            partyService.invitefriend(req.params,req.body).then((response) => {
+                res.send(response);
+            }).catch((err) => {
+                res.send(err)
+            })
+        }
+    });
+}
 function deleteUsersToTheParty(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
         if (deCodeData) {
@@ -34,31 +47,36 @@ function getInfomationUserUsing(token) {
     });
 }
 
-function getAllPartyNotUsed(req,res){
-  
+function getAllPartyNotUsed(req, res) {
+
 }
 
 function getAllParty(req, res) {
-    if (req.query.page && req.query.limt) {
+    if (req.query.page && req.query.limit) {
         partyService.getPageParty(req.query).then((response) => {
             res.send(response);
         }).catch((err) => {
             res.send(err)
         })
     } else if (req.query.idRestaurant) {
-        partyService.getPartyByIdRestaurant(req.params).then((response) => {
+        partyService.getPartyByIdRestaurant(req.query).then((response) => {
             res.send(response);
         }).catch((err) => {
             res.send(err);
         })
-    }
-    else if(req.query.status){
-        partyService.getAllPartyNotUsed(req.query.status).then(function(response){
+    } else if (req.query.status) {
+        partyService.getAllPartyNotUsed(req.query.status).then(function (response) {
             res.send(response)
-        }).catch(function(err){
+        }).catch(function (err) {
             res.send(err)
         });
-    }else {
+    } else if (req.query.public) {
+        partyService.getPartyByPublic(req.query).then((response) => {
+            res.send(response);
+        }).catch((err) => {
+            res.send(err)
+        })
+    } else {
         partyService.getAllParty().then((response) => {
             res.send(response);
         }).catch((err) => {
@@ -99,6 +117,7 @@ function createParty(req, res) {
         if (deCodeData) {
             req.body.myId = deCodeData._id;
             req.body.listUser = [];
+            req.body.listUserBeInvite = [];
             partyService.createParty(req.body).then((response) => {
                 res.send(response);
             }).catch((err) => {
@@ -120,3 +139,15 @@ function AddUsersToTheParty(req, res) {
         }
     });
 }
+// function AddUsersBeInvite(req, res) {
+//     userService.getUserById(req._id).then(function (deCodeData) {
+//         if (deCodeData) {
+//             req.params.myId = deCodeData._id;
+//             partyService.AddUsersBeInvite(req.params).then((response) => {
+//                 res.send(response);
+//             }).catch((err) => {
+//                 res.send(err)
+//             })
+//         }
+//     });
+// }

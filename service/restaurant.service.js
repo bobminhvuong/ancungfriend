@@ -14,6 +14,7 @@ module.exports = {
     updateRate: updateRate,
     getPageRestaurant: getPageRestaurant,
     addImagRestaurant: addImagRestaurant,
+    getRestaurantByName: getRestaurantByName
 }
 function addImagRestaurant(req, file) {
     return new Promise((resolve, reject) => {
@@ -181,7 +182,26 @@ function getRestaurantById(req) {
         });
     });
 }
-
+function getRestaurantByName(req) {
+    return new Promise((resolve, reject) => {
+        Restaurant.find({
+            name: new RegExp(req.query.name, "i")
+        }).exec(function (err, response) {
+            if (err) {
+                reject(err);
+            } else {
+                if (response) {
+                    resolve(response)
+                } else {
+                    reject({
+                        statusCode: message.STATUS_CODE.NOT_FOUND,
+                        message: message.ERROR_MESSAGE.RESTAURANT.RESTAURANT_NOT_FOUND
+                    })
+                }
+            }
+        });
+    });
+}
 function updateRestaurant(req) {
     return new Promise((resolve, reject) => {
         Restaurant.findOne({
@@ -282,7 +302,13 @@ function createRestaurant(req) {
                                     if (err) {
                                         reject(err);
                                     } else {
-                                        resolve(response);
+                                        
+                                        //console.log(response);
+                                        resolve({
+                                            response:response,
+                                            statusCode :message.STATUS_CODE.CREATED,
+                                            message: message.SUCCESS_MESSAGE.RESTAURANT.RESTAURANT_FOOD_CREATED
+                                        });
                                     }
                                 });
                             }

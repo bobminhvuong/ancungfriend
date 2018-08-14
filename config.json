@@ -3,14 +3,15 @@
     "BASE_URL": "/api",
     "mongodb": {
         "host": "localhost:27017",
+        "hostlocal": "mongodb://localhost:27017/ancungbanbe",
         "hostweb": "mongodb://admin:minhvuong@123@ds141661.mlab.com:41661/ancung",
-        "database": "ancung"
+        "database": "ancung" 
     },
     "TOKEN": "x-access-token",
     "timeToken": 86400,
     "MAIL": {
         "SERVICE": "Gmail",
-        "USERNAME": "bob.minhvuong@gmail.com",
-        "PASSWORD": "minhvuong15014811"
+        "USERNAME": "ancungbanbe@gmail.com",
+        "PASSWORD": "ha2281996"
     }
 }

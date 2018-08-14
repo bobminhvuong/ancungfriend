@@ -335,5 +335,111 @@
  * ]
  *
  */
+/**
+ * @api {get} api/party?public=true GET PARTY PUBLIC
+ * @apiDescription API get Party Public
+ * @apiVersion 0.0.1
+ * @apiName get forthComming
+ * @apiGroup UPDATE
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/party?public=true
+ *
+ * @apiHeader (Request Header) {String} x-access-token token
+ *
+ * 
+ * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
+ * @apiSuccess (Response Body 200) {String} message Message
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *   [
+ *    
+        "listUser": [
+            {
+                "_id": "5b72d0f7d671c81710bdd52c",
+                "id": "5b6096f9790e6e02582d45a9",
+                "leader": true,
+                "invite": false,
+                "accept": true
+            },
+            {
+                "_id": "5b72df2b2e985b2728031bf9",
+                "id": "5b5c8090cf8d6b00203c7587",
+                "leader": false,
+                "invite": true,
+                "accept": false
+            }
+        ],
+        "_id": "5b72d0f7d671c81710bdd52b",
+        "titel": "cccc",
+        "field": "qqqq",
+        "numberMax": 60,
+        "currentNumber": 1,
+        "status": true,
+        "timeStart": "01:00",
+        "timeEnd": "02:00",
+        "dateStart": "2018-09-03T00:00:00.000Z",
+        "idRestaurant": "5b5459837c82af0020002fb4",
+        "public": true,
+        "createAt": "2018-08-14T12:54:15.112Z",
+        "__v": 1
+    }
+ * ]
+ *
+ */
 
+ /**
+ * @api {get} api/party/invitefriend/:id invite Friend party
+ * @apiDescription API invite Friend party
+ * @apiVersion 0.0.1
+ * @apiName invite Friend party
+ * @apiGroup UPDATE
+ *
+ * @apiExample {curl} Example usage:
+ *      curl -i http://localhost/api/party/invitefriend/5b72d0f7d671c81710bdd52b
+ *
+ * @apiHeader (Request Header) {String} x-access-token token
+ * @apiParam (Request Body) {String} idUser id user invite
+ * @apiParam (Request param) {String} id id party 
+ *
+ * 
+ * @apiSuccess (Response Header 200) {String} Content-Type="application/json" Content Type
+ * @apiSuccess (Response Body 200) {String} message Message
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  [
+ *    
+        "listUser": [
+            {
+                "_id": "5b72d0f7d671c81710bdd52c",
+                "id": "5b6096f9790e6e02582d45a9",
+                "leader": true,
+                "invite": false,
+                "accept": true
+            },
+            {
+                "_id": "5b72df2b2e985b2728031bf9",
+                "id": "5b5c8090cf8d6b00203c7587",
+                "leader": false,
+                "invite": true,
+                "accept": false
+            }
+        ],
+        "_id": "5b72d0f7d671c81710bdd52b",
+        "titel": "cccc",
+        "field": "qqqq",
+        "numberMax": 60,
+        "currentNumber": 1,
+        "status": true,
+        "timeStart": "01:00",
+        "timeEnd": "02:00",
+        "dateStart": "2018-09-03T00:00:00.000Z",
+        "idRestaurant": "5b5459837c82af0020002fb4",
+        "public": true,
+        "createAt": "2018-08-14T12:54:15.112Z",
+        "__v": 1
+    }
+ * ]
+ *
+ */
  //--------------------------------------------------------

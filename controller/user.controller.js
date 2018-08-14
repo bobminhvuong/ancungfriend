@@ -12,10 +12,11 @@ module.exports = {
     getUserByEmail: getUserByEmail,
     addfriend: addfriend,
     sendMail: sendMail,
-    createAdmin:createAdmin,
-    inviteFriend:inviteFriend,
-    deletefriend:deletefriend
+    createAdmin: createAdmin,
+    inviteFriend: inviteFriend,
+    deletefriend: deletefriend,
 }
+
 function deletefriend(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
         if (deCodeData) {

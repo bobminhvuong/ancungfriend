@@ -1390,7 +1390,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "api/restaurant/image/:id",
+    "url": "/public/restaurant/:id",
     "title": "IMAGE RESTAURANT",
     "description": "<p>API image restaurant</p>",
     "version": "0.0.1",
@@ -1399,7 +1399,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "curl -i http://localhost/api/restaurant/rate/599545c60548b62a678409b9",
+        "content": "curl -i http://localhost/public/restaurant/599545c60548b62a678409b9.png",
         "type": "curl"
       }
     ],
@@ -2339,6 +2339,67 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "api/party?public=true",
+    "title": "GET PARTY PUBLIC",
+    "description": "<p>API get Party Public</p>",
+    "version": "0.0.1",
+    "name": "get_forthComming",
+    "group": "UPDATE",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/party?public=true",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Header 200": [
+          {
+            "group": "Response Header 200",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>Content Type</p>"
+          }
+        ],
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  [\n   \n        \"listUser\": [\n            {\n                \"_id\": \"5b72d0f7d671c81710bdd52c\",\n                \"id\": \"5b6096f9790e6e02582d45a9\",\n                \"leader\": true,\n                \"invite\": false,\n                \"accept\": true\n            },\n            {\n                \"_id\": \"5b72df2b2e985b2728031bf9\",\n                \"id\": \"5b5c8090cf8d6b00203c7587\",\n                \"leader\": false,\n                \"invite\": true,\n                \"accept\": false\n            }\n        ],\n        \"_id\": \"5b72d0f7d671c81710bdd52b\",\n        \"titel\": \"cccc\",\n        \"field\": \"qqqq\",\n        \"numberMax\": 60,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"01:00\",\n        \"timeEnd\": \"02:00\",\n        \"dateStart\": \"2018-09-03T00:00:00.000Z\",\n        \"idRestaurant\": \"5b5459837c82af0020002fb4\",\n        \"public\": true,\n        \"createAt\": \"2018-08-14T12:54:15.112Z\",\n        \"__v\": 1\n    }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/updateNew.documnet.js",
+    "groupTitle": "UPDATE"
+  },
+  {
+    "type": "get",
     "url": "api/party?page=?&&limit=?",
     "title": "GET PAGE PARTY",
     "description": "<p>API Get page type food</p>",
@@ -2484,7 +2545,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "api/party?idrestaurant=?",
+    "url": "api/party?idRestaurant=?",
     "title": "GET PARTY BY ID RESTAURANT",
     "description": "<p>API type food by idrestaurant</p>",
     "version": "0.0.1",
@@ -2633,6 +2694,89 @@ define({ "api": [
         {
           "title": "Error-404-Response:",
           "content": " {\n     \"statusCode\":404,\n     \"message\": \"RESTAURANT_NOT_FOUND\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/updateNew.documnet.js",
+    "groupTitle": "UPDATE"
+  },
+  {
+    "type": "get",
+    "url": "api/party/invitefriend/:id",
+    "title": "invite Friend party",
+    "description": "<p>API invite Friend party</p>",
+    "version": "0.0.1",
+    "name": "invite_Friend_party",
+    "group": "UPDATE",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/party/invitefriend/5b72d0f7d671c81710bdd52b",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Request Body": [
+          {
+            "group": "Request Body",
+            "type": "String",
+            "optional": false,
+            "field": "idUser",
+            "description": "<p>id user invite</p>"
+          }
+        ],
+        "Request param": [
+          {
+            "group": "Request param",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id party</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Header 200": [
+          {
+            "group": "Response Header 200",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>Content Type</p>"
+          }
+        ],
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " [\n   \n        \"listUser\": [\n            {\n                \"_id\": \"5b72d0f7d671c81710bdd52c\",\n                \"id\": \"5b6096f9790e6e02582d45a9\",\n                \"leader\": true,\n                \"invite\": false,\n                \"accept\": true\n            },\n            {\n                \"_id\": \"5b72df2b2e985b2728031bf9\",\n                \"id\": \"5b5c8090cf8d6b00203c7587\",\n                \"leader\": false,\n                \"invite\": true,\n                \"accept\": false\n            }\n        ],\n        \"_id\": \"5b72d0f7d671c81710bdd52b\",\n        \"titel\": \"cccc\",\n        \"field\": \"qqqq\",\n        \"numberMax\": 60,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"01:00\",\n        \"timeEnd\": \"02:00\",\n        \"dateStart\": \"2018-09-03T00:00:00.000Z\",\n        \"idRestaurant\": \"5b5459837c82af0020002fb4\",\n        \"public\": true,\n        \"createAt\": \"2018-08-14T12:54:15.112Z\",\n        \"__v\": 1\n    }\n]",
           "type": "json"
         }
       ]

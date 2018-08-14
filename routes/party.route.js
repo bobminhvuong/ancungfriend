@@ -9,6 +9,7 @@ module.exports = function () {
     router.post('/', auth, partyController.createParty);
     router.post('/joinParty/:id', auth, partyController.AddUsersToTheParty);//idRestaurant
     router.delete('/joinParty/:id', auth, partyController.deleteUsersToTheParty);//idRestaurant
+    router.post('/invitefriend/:id', auth, partyController.invitefriend);//idRestaurant
 
     return router;
 }

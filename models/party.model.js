@@ -1,47 +1,53 @@
 var mongoose = require('mongoose');
 var partySchema = new mongoose.Schema({
-    titel:{
-        type:String,
-        require:true
+    titel: {
+        type: String,
+        require: true
     },
-    field:{
-        type:String
+    field: {
+        type: String
     },
-    numberMax:{
-        type:Number,
-        require:true
+    numberMax: {
+        type: Number,
+        require: true
     },
-    currentNumber:{
-        type:Number
-    } ,
-    status:{
-        type:Boolean,
-        require:true
+    currentNumber: {
+        type: Number
     },
-    timeStart:{
-        type:String,    
-        require:true
+    status: {
+        type: Boolean,
+        require: true
     },
-    timeEnd:{
-        type:String,
-        require:true
+    timeStart: {
+        type: String,
+        require: true
     },
-    dateStart:{
+    timeEnd: {
+        type: String,
+        require: true
+    },
+    dateStart: {
         type: Date,
         required: true
     },
-    idRestaurant:{
-        type:String,
-        require:true
+    idRestaurant: {
+        type: String,
+        require: true
     },
-    listUser:[{
-        id:String,
-        leader: Boolean
+    listUser: [{
+        id: String,
+        leader: Boolean,
+        invite: Boolean,
+        accept: Boolean
     }],
-    createAt:{
-        type:Date,
-        require:true
+    createAt: {
+        type: Date,
+        require: true
     },
+    public: {
+        type: Boolean,
+        require: true
+    }
 })
-var Party = mongoose.model('party',partySchema);
+var Party = mongoose.model('party', partySchema);
 module.exports = Party;

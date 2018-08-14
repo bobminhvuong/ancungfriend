@@ -9,7 +9,8 @@ module.exports = {
     deleteRestaurant: deleteRestaurant,
     createRestaurant: createRestaurant,
     updateRate: updateRate,
-    updateImage: updateImageRestaurant
+    updateImage: updateImageRestaurant,
+    getRestaurantByName:getRestaurantByName
 }
 function updateImageRestaurant(req, res) {
     let uploadedFile = req.files.file;
@@ -80,7 +81,13 @@ function getRestaurantById(req, res) {
         res.send(err)
     })
 }
-
+function getRestaurantByName(req, res) {
+    restaurantService.getRestaurantByName(req.params).then((response) => {
+        res.send(response);
+    }).catch((err) => {
+        res.send(err)
+    })
+}
 function updateRestaurant(req, res) {
     var request = req.body;
     request.id = req.params.id;

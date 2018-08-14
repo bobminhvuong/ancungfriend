@@ -7,7 +7,7 @@ var pub = fs.readFileSync(__dirname + '/key/key.pub');
 exports.sign = function (obj, callback) {
     jwt.sign(obj, cert, {
         algorithm: 'RS256',
-        expiresIn:config.timeToken
+        expiresIn:config.timeToken // token time 
     }, function (err, token) {
         callback(err, token);
     });

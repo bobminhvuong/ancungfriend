@@ -139,6 +139,15 @@ function inviteFriend(req) {
                                     subject: nameUserSend + ' ĐÃ MỜI BẠN THAM GIA BỮA TIỆC ' + nameParty,
                                     html: urlTemplate
                                 };
+                                // set 
+                                // getUserByEmail(req.email).then((user) => {
+                                //     User.findOne({
+                                //         _id: user._id
+                                //     }).exec(function (err, res) {
+                                //         res.isInvite = true;
+                                //         res.save();
+                                //     })
+                                // })
                                 transporter.sendMail(mailOptions, function (err, info) {
                                     if (err) {
                                         reject(err)
@@ -420,7 +429,7 @@ function updateUser(request) {
     });
 }
 
-function getUserById(req, ) {
+function getUserById(req) {
     return new Promise((resolve, reject) => {
         User.findOne({
             _id: req.id

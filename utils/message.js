@@ -11,7 +11,8 @@ module.exports = {
             PASS_WRONG: 'PASS_WRONG',
             IMAGE_USER_NOT_FOUND:'IMAGE_USER_NOT_FOUND',
             USER_REGISTERED:'USER_REGISTERED',
-            USER_NOT_OUT:'USER_NOT_OUT_PARTY'
+            USER_NOT_OUT:'USER_NOT_OUT_PARTY',
+            USER_INVITED:'USER_INVITED'
             
         },
         TYPE_FOOD:{
@@ -29,7 +30,9 @@ module.exports = {
             PARTY_NOT_FOUND:'PARTY_NOT_FOUND',
             PARTY_IS_VALID:'PARTY_IS_VALID',
             PARTY_DATE_ERROR:'PARTY_DATE_ERROR',
-            PARTY_ALREADY_FULL:'PARTY_ALREADY_FULL'  
+            PARTY_ALREADY_FULL:'PARTY_ALREADY_FULL' ,
+            PARTY_PRIVATE:'PARTY_PRIVATE'
+
         },
         AUTH: {
             INVALID_TOKEN: 'INVALID_TOKEN',
@@ -61,7 +64,7 @@ module.exports = {
         },
         PARTY:{
             PARTY_FOOD_CREATED: 'PARTY_CREATED',
-            PARTY_FOOD_DELETED: 'PARTY_DELETED',
+            PARTY_FOOD_DELETED: 'PARTY_DELETED'
         }
     },
     STATUS_CODE: {
