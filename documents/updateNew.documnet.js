@@ -339,7 +339,7 @@
  * @api {get} api/party?public=true GET PARTY PUBLIC
  * @apiDescription API get Party Public
  * @apiVersion 0.0.1
- * @apiName get forthComming
+ * @apiName get Party Public
  * @apiGroup UPDATE
  *
  * @apiExample {curl} Example usage:

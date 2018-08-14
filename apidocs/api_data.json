@@ -2138,6 +2138,67 @@
   },
   {
     "type": "get",
+    "url": "api/party?public=true",
+    "title": "GET PARTY PUBLIC",
+    "description": "<p>API get Party Public</p>",
+    "version": "0.0.1",
+    "name": "get_Party_Public",
+    "group": "UPDATE",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/api/party?public=true",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Request Header": [
+          {
+            "group": "Request Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-access-token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response Header 200": [
+          {
+            "group": "Response Header 200",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "defaultValue": "application/json",
+            "description": "<p>Content Type</p>"
+          }
+        ],
+        "Response Body 200": [
+          {
+            "group": "Response Body 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  [\n   \n        \"listUser\": [\n            {\n                \"_id\": \"5b72d0f7d671c81710bdd52c\",\n                \"id\": \"5b6096f9790e6e02582d45a9\",\n                \"leader\": true,\n                \"invite\": false,\n                \"accept\": true\n            },\n            {\n                \"_id\": \"5b72df2b2e985b2728031bf9\",\n                \"id\": \"5b5c8090cf8d6b00203c7587\",\n                \"leader\": false,\n                \"invite\": true,\n                \"accept\": false\n            }\n        ],\n        \"_id\": \"5b72d0f7d671c81710bdd52b\",\n        \"titel\": \"cccc\",\n        \"field\": \"qqqq\",\n        \"numberMax\": 60,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"01:00\",\n        \"timeEnd\": \"02:00\",\n        \"dateStart\": \"2018-09-03T00:00:00.000Z\",\n        \"idRestaurant\": \"5b5459837c82af0020002fb4\",\n        \"public\": true,\n        \"createAt\": \"2018-08-14T12:54:15.112Z\",\n        \"__v\": 1\n    }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "documents/updateNew.documnet.js",
+    "groupTitle": "UPDATE"
+  },
+  {
+    "type": "get",
     "url": "api/party",
     "title": "GET ALL PARTY",
     "description": "<p>API Get all PARTY</p>",
@@ -2330,67 +2391,6 @@
         {
           "title": "Success-Response:",
           "content": "  [\n   {\n      \"listUser\": [\n            {\n                \"_id\": \"5b4f500cb3f8ba2e24de3178\",\n                \"id\": \"5b4f500cb3f8ba2e24de3177\",\n                \"leader\": true\n            },\n            {\n                \"_id\": \"5b4f508c1fa148122c0e96eb\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50b575565e39708b3522\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            },\n            {\n                \"_id\": \"5b4f50cd3f37653748d34279\",\n                \"id\": \"5b4ed87ea588892fa8db6590\",\n                \"leader\": false\n            }\n        ],\n        \"_id\": \"5b4f500cb3f8ba2e24de3177\",\n        \"titel\": \"ăn \",\n        \"field\": \" nhậu\",\n        \"numberMax\": 5,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"7h\",\n        \"dateStart\": \"2018-07-18T17:00:00.000Z\",\n        \"idRestaurant\": \"5b4da355dedc7030b83064c1\",\n        \"createAt\": \"2018-07-18T14:34:52.831Z\",\n        \"__v\": 3\n   }\n]",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "documents/updateNew.documnet.js",
-    "groupTitle": "UPDATE"
-  },
-  {
-    "type": "get",
-    "url": "api/party?public=true",
-    "title": "GET PARTY PUBLIC",
-    "description": "<p>API get Party Public</p>",
-    "version": "0.0.1",
-    "name": "get_forthComming",
-    "group": "UPDATE",
-    "examples": [
-      {
-        "title": "Example usage:",
-        "content": "curl -i http://localhost/api/party?public=true",
-        "type": "curl"
-      }
-    ],
-    "header": {
-      "fields": {
-        "Request Header": [
-          {
-            "group": "Request Header",
-            "type": "String",
-            "optional": false,
-            "field": "x-access-token",
-            "description": "<p>token</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response Header 200": [
-          {
-            "group": "Response Header 200",
-            "type": "String",
-            "optional": false,
-            "field": "Content-Type",
-            "defaultValue": "application/json",
-            "description": "<p>Content Type</p>"
-          }
-        ],
-        "Response Body 200": [
-          {
-            "group": "Response Body 200",
-            "type": "String",
-            "optional": false,
-            "field": "message",
-            "description": "<p>Message</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "  [\n   \n        \"listUser\": [\n            {\n                \"_id\": \"5b72d0f7d671c81710bdd52c\",\n                \"id\": \"5b6096f9790e6e02582d45a9\",\n                \"leader\": true,\n                \"invite\": false,\n                \"accept\": true\n            },\n            {\n                \"_id\": \"5b72df2b2e985b2728031bf9\",\n                \"id\": \"5b5c8090cf8d6b00203c7587\",\n                \"leader\": false,\n                \"invite\": true,\n                \"accept\": false\n            }\n        ],\n        \"_id\": \"5b72d0f7d671c81710bdd52b\",\n        \"titel\": \"cccc\",\n        \"field\": \"qqqq\",\n        \"numberMax\": 60,\n        \"currentNumber\": 1,\n        \"status\": true,\n        \"timeStart\": \"01:00\",\n        \"timeEnd\": \"02:00\",\n        \"dateStart\": \"2018-09-03T00:00:00.000Z\",\n        \"idRestaurant\": \"5b5459837c82af0020002fb4\",\n        \"public\": true,\n        \"createAt\": \"2018-08-14T12:54:15.112Z\",\n        \"__v\": 1\n    }\n]",
           "type": "json"
         }
       ]
