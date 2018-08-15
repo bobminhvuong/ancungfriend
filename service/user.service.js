@@ -125,7 +125,7 @@ function inviteFriend(req) {
                                     description: party.field,
                                     currentnumber: party.currentNumber,
                                     numberMax: party.numberMax,
-                                    linkUrl:req.linkUrl,
+                                    linkUrl:req.linkUrl || 'http://localhost:4200',
                                     restaurant: restaurant.name,
                                     address: restaurant.address
                                 };
@@ -151,8 +151,12 @@ function inviteFriend(req) {
                                 transporter.sendMail(mailOptions, function (err, info) {
                                     if (err) {
                                         reject(err)
+                                        console.log(err);
+                                        
                                     } else {
                                         if (info) {
+                                            console.log(info);
+                                            
                                             resolve({
                                                 statusCode: message.STATUS_CODE.ACCEPTED,
                                                 message: message.SUCCESS_MESSAGE.USER.SENT_MAIL

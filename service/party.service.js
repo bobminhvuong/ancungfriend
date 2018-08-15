@@ -27,7 +27,7 @@ function invitefriend(param, req) {
                 reject(err)
             } else {
                 if (response) {
-                    if (response.listUser.length == currentNumber) {
+                    if (response.listUser.length == response.numberMax) {
                         reject({
                             statusCode: message.STATUS_CODE.ERROR,
                             message: message.ERROR_MESSAGE.USER.USER_MAX
@@ -50,13 +50,6 @@ function invitefriend(param, req) {
                                 if (err) {
                                     reject(err)
                                 } else {
-                                    userService.getUserById({ id: req.idUser }).then((result) => {
-                                        if (result) {
-                                            userService.inviteFriend({ email: response.email, idParty: party._id }).then((resultmail) => {
-
-                                            })
-                                        }
-                                    })
                                     resolve(party)
                                 }
                             })
@@ -65,7 +58,7 @@ function invitefriend(param, req) {
                 } else {
                     reject({
                         statusCode: message.STATUS_CODE.NOT_FOUND,
-                        message: message.ERROR_MESSAGE.PARTY.NOT_FOUND
+                        message: message.ERROR_MESSAGE.PARTY.PARTY_NOT_FOUND
                     })
                 }
             }
@@ -177,7 +170,7 @@ function AddUsersToTheParty(req) {
                             var checkUser = response.listUser.filter(function (item) {
                                 return item.id == req.myId
                             });
-                            if (checkUser.length == 0) {
+                            if (checkUser.length < 0) {
                                 response.listUser.push({
                                     id: req.myId,
                                     leader: false,

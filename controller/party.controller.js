@@ -12,14 +12,32 @@ module.exports = {
     AddUsersToTheParty: AddUsersToTheParty,
     getAllPartyNotUsed: getAllPartyNotUsed,
     deleteUsersToTheParty: deleteUsersToTheParty,
-    invitefriend:invitefriend
+    invitefriend: invitefriend
 }
-function invitefriend(req,res){
+function invitefriend(req, res) {
     getInfomationUserUsing(req.headers[config.TOKEN]).then(function (deCodeData) {
         if (deCodeData) {
             req.params.myId = deCodeData._id;
-            partyService.invitefriend(req.params,req.body).then((response) => {
-                res.send(response);
+            req.body.myId = deCodeData._id;
+            partyService.invitefriend(req.params, req.body).then((response) => {
+                if (response) {
+                    userService.getUserById({ id: req.body.idUser }).then((result) => {
+                        if (result) {
+                            console.log(result);
+                            userService.inviteFriend({ myId: deCodeData._id, email: result.email, idParty: response._id, linkUrl: req.linkUrl }).then((resulmail)=>{
+                                res.send({
+                                    result:result,
+                                    message:resulmail
+                                });
+                            }).catch((err)=>{
+                                reject({
+                                    result:result,
+                                    message:err
+                                })
+                            });
+                        }
+                    })
+                }
             }).catch((err) => {
                 res.send(err)
             })
